@@ -8,7 +8,9 @@ html, body {
 
 :root {
     --color1: #080812;
+    --color2: #161620;
     --dock-height: 62px;
+    --menu-width: 300px;
 }
 
 @font-face {
@@ -66,11 +68,31 @@ html, body {
 }
 
 .dock-item :hover{
-    background-color: #161620;
+    background-color: var(--color2);
 }
 
 .dock-item .dock-item-icon{
     padding: 10px;
     height: calc(var(--dock-height) - 15px);
     width: calc(var(--dock-height) - 15px);
+}
+
+.menu{
+    max-width: var(--menu-width);
+    min-width: var(--menu-width);
+    width: var(--menu-width);
+    color: #ddd;
+    background-color: var(--color1);
+    padding: 2px;
+    border-radius: 2px;
+    list-style-type: none;
+    overflow: scroll;
+}
+
+.menu .menu-item{
+    padding: 3px;
+}
+.menu .menu-item:hover{
+    cursor: default;
+    background-color: var(--color2);
 }

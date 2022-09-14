@@ -1,4 +1,6 @@
 window.onload = () => {
+    const container = document.getElementById("container");
+
     // Updating time
     const months = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -37,4 +39,34 @@ window.onload = () => {
     }
     update_time();
     setInterval(update_time, 1000);
+
+    // right click menu
+    container.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+    });
+    let menu;
+    container.addEventListener("mousedown", (event) => {
+        if (event.button == 0 && menu && event.target != menu){
+            container.removeChild(menu);
+            menu = undefined;
+        }
+        if (event.button == 0) return;
+
+        event.preventDefault();
+        console.log(menu);
+        if (!menu) {
+            menu = document.createElement("div");
+            menu.classList.add("menu");
+            menu.innerHTML = `
+            <li class="menu-item">This is a menu</li>
+            <li class="menu-item">This is a menu</li>
+            <li class="menu-item">This is a menu</li>
+            `
+            menu.style.position = "fixed";
+            menu.style.top = event.pageY + "px";
+            menu.style.left = event.pageX + "px";
+
+            container.appendChild(menu);
+        }
+    })
 }
