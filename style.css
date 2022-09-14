@@ -20,7 +20,7 @@ html, body {
 #dock{
     z-index: 10;
     color: white;
-    height: 50px;
+    height: 60px;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -28,12 +28,19 @@ html, body {
 }
 
 #topbar{
+    font-size: 0.95em;
     z-index: 10;
     color: white;
-    height: 20px;
+    height: 22px;
     width: 100%;
     position: fixed;
     top: 0;
     background-color: var(--color1);
     overflow: hidden;
+}
+
+#date_time {
+    position:inherit;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
