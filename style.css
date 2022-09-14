@@ -10,6 +10,11 @@ html, body {
     --color1: #080812; 
 }
 
+@font-face {
+    font-family: NerdFontSymbols;
+    src: url("assets/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf");
+}
+
 #container {
     height: 100%;
     width: 100%;
@@ -43,4 +48,11 @@ html, body {
     position:inherit;
     left: 50%;
     transform: translate(-50%, 0);
+}
+
+#sys_tray{
+    font-family: NerdFontSymbols;
+    position: inherit;
+    right: 0;
+    padding-right: 1%;
 }
