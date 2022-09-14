@@ -7,7 +7,8 @@ html, body {
 }
 
 :root {
-    --color1: #080812; 
+    --color1: #080812;
+    --dock-height: 62px;
 }
 
 @font-face {
@@ -18,14 +19,15 @@ html, body {
 #container {
     height: 100%;
     width: 100%;
-    background-image: url("assets/wallpapers/pawel-czerwinski-tMbQpdguDVQ-unsplash.jpg");
+    /* background-image: url("assets/wallpapers/pawel-czerwinski-tMbQpdguDVQ-unsplash.jpg"); */
+    background-image: url("assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg");
     background-size: cover;
 }
 
 #dock{
     z-index: 10;
     color: white;
-    height: 60px;
+    height: var(--dock-height);
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -55,4 +57,20 @@ html, body {
     position: inherit;
     right: 0;
     padding-right: 1%;
+}
+
+.dock-item{
+    border-radius: 15px;
+    height: var(--dock-height);
+    width: var(--dock-height);
+}
+
+.dock-item :hover{
+    background-color: #161620;
+}
+
+.dock-item .dock-item-icon{
+    padding: 10px;
+    height: calc(var(--dock-height) - 15px);
+    width: calc(var(--dock-height) - 15px);
 }
