@@ -27,6 +27,7 @@ html, body {
 }
 
 #dock{
+    user-select: none;
     z-index: 10;
     color: white;
     height: var(--dock-height);
@@ -37,6 +38,7 @@ html, body {
 }
 
 #topbar{
+    user-select: none;
     font-size: 0.95em;
     z-index: 10;
     color: white;
@@ -49,12 +51,14 @@ html, body {
 }
 
 #date_time {
+    user-select: none;
     position:inherit;
     left: 50%;
     transform: translate(-50%, 0);
 }
 
 #sys_tray{
+    user-select: none;
     font-family: NerdFontSymbols;
     position: inherit;
     right: 0;
@@ -62,6 +66,7 @@ html, body {
 }
 
 .dock-item{
+    user-select: none;
     border-radius: 15px;
     height: var(--dock-height);
     width: var(--dock-height);
@@ -78,6 +83,7 @@ html, body {
 }
 
 .menu{
+    user-select: none;
     display:none;
     position:fixed;
     max-width: var(--menu-width);
@@ -92,6 +98,7 @@ html, body {
 }
 
 .menu .menu-item{
+    user-select: none;
     padding: 3px;
 }
 .menu .menu-item:hover{
