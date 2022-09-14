@@ -7,6 +7,7 @@ window.onload = () => {
     function update_time() {
         const date = new Date();
         let seconds = (date.getSeconds() < 10) ? `0${date.getSeconds()}` : date.getSeconds();
+        let minutes = (date.getMinutes() < 10) ? `0${date.getMinutes()}` : date.getMinutes();
         let day = date.getDay();
         switch (day) {
             case 0:
@@ -31,7 +32,7 @@ window.onload = () => {
                 day = "Sat";
                 break;
         }
-        let date_time_str = `${day} ${months[date.getMonth()].slice(0, 3)} ${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${seconds}`
+        let date_time_str = `${day} ${months[date.getMonth()].slice(0, 3)} ${date.getDate()} ${date.getHours()}:${minutes}:${seconds}`
         date_time.innerHTML = date_time_str;
     }
     update_time();
