@@ -95,6 +95,7 @@ container.addEventListener("contextmenu", (event) => {
 // })
 
 container.addEventListener("mousedown", (event) => {
+    if(event.target != container) return;
     let menu = document.getElementById("menu");
     if (event.button == 0 && event.target != menu) {
         menu.style.display = "none";
