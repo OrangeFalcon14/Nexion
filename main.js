@@ -112,7 +112,7 @@ function changeBackground() {
     container.style.backgroundImage = `url('${wallpaper_paths[++current_wallpaper % wallpaper_paths.length]}')`;
 }
 
-function new_window() {
+function new_window(title) {
     function create_titlebar_button(type, icon, onclick) {
         let btn = document.createElement("button");
         btn.classList.add("titlebar-btn");
@@ -167,6 +167,11 @@ function new_window() {
     titlebar.appendChild(close_btn);
     titlebar.appendChild(min_btn);
     titlebar.appendChild(max_btn);
+
+    let window_title = document.createElement("div");
+    window_title.classList.add("window-title");
+    window_title.innerHTML = title;
+    titlebar.appendChild(window_title);
 
     container.appendChild(window);
     dragElement(window);
