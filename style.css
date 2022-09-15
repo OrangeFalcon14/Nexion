@@ -105,3 +105,67 @@ html, body {
     cursor: default;
     background-color: var(--color2);
 }
+
+.window{
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    height: 750px;
+    width: 1000px;
+    z-index: 9;
+    background-color: var(--color2);
+    border-radius: 10px;
+}
+
+.window #titlebar{
+    height: 50px;
+    width: 100%;
+    background-color: var(--color1);
+    border-radius: 10px;
+}
+
+.window #titlebar .titlebar-btn{
+    position: relative;
+    top: 25%;
+    left: 1%;
+    /* padding: 15px; */
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    margin-left: 1%;
+}
+/* .window #titlebar .titlebar-btn:hover {
+    opacity: 0.5;
+    background-color: #FF2946;
+} */
+
+.window #titlebar .close-btn{
+    background-color: #FF2946;
+}
+/* .window #titlebar .close-btn:hover{
+    background-image: url("assets/icons/system/window-close.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+.window #titlebar .minimize-btn{
+    /* padding-top: 0px; */
+    background-color: #00FF7A;
+}
+/* .window #titlebar .minimize-btn:hover{
+    background-image: url("assets/icons/system/window-minimize.svg");
+    background-position: top;
+    background-repeat: no-repeat;
+} */
+
+.window #titlebar .maximize-btn{
+    background-color: #E4FF84;
+}
+/* .window #titlebar .maximize-btn:hover{
+    background-image: url("assets/icons/system/window-maximize.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+} */

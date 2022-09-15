@@ -1,4 +1,5 @@
 const container = document.getElementById("container");
+const dock = document.getElementById("dock");
 
 const wallpaper_paths = [
     "assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg",
@@ -109,4 +110,100 @@ container.addEventListener("mousedown", (event) => {
 function changeBackground() {
     console.log("Hello");
     container.style.backgroundImage = `url('${wallpaper_paths[++current_wallpaper % wallpaper_paths.length]}')`;
+}
+
+function new_window() {
+    function create_titlebar_button(type, icon, onclick) {
+        let btn = document.createElement("button");
+        btn.classList.add("titlebar-btn");
+        switch (type) {
+            case "close":
+                btn.classList.add("close-btn");
+                break;
+
+            case "maximize":
+                btn.classList.add("maximize-btn");
+                break;
+
+            case "minimize":
+                btn.classList.add("minimize-btn");
+                break;
+        }
+        btn.onclick = onclick;
+        return btn;
+    }
+    let window = document.createElement("div");
+    window.close = () => {
+        container.removeChild(window);
+    }
+    window.maximize = () => {
+        window.style.transition = "all 0.5s";
+        window.style.top = "22px";
+        window.style.left = "0px";
+        window.style.height = `calc(100% - 62px)`;
+        window.style.width = "100%";
+        console.log(window.style.transition);
+        window.style.transition = "";
+    }
+    window.minimize = () => {
+        window.style.transition = "all 0.5s";
+        window.style.top = "100px";
+        window.style.left = "10px";
+        window.style.height = "750px";
+        window.style.width = "1000px";
+        window.style.transition = "";
+    }
+    window.classList.add("window");
+
+    let titlebar = document.createElement("div");
+    titlebar.classList.add("window-titlebar");
+    titlebar.id = "titlebar";
+    window.appendChild(titlebar);
+
+    let close_btn = create_titlebar_button("close", "assets/icons/system/window-close.svg", window.close);
+    let max_btn = create_titlebar_button("minimize", "assets/icons/system/window-maximize.svg", window.minimize);
+    let min_btn = create_titlebar_button("maximize", "assets/icons/system/window-minimize.svg", window.maximize);
+
+    titlebar.appendChild(close_btn);
+    titlebar.appendChild(min_btn);
+    titlebar.appendChild(max_btn);
+
+    container.appendChild(window);
+    dragElement(window);
+}
+
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "titlebar")) {
+        document.getElementById(elmnt.id + "titlebar").onmousedown = dragMouseDown;
+    } else {
+        elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        // elmnt.style.transition = "";
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
 }
