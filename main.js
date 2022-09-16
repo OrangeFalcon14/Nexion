@@ -98,7 +98,7 @@ container.addEventListener("contextmenu", (event) => {
 // })
 
 container.addEventListener("mousedown", (event) => {
-    if(event.target != container) return;
+    if (event.target != container) return;
     let menu = document.getElementById("menu");
     if (event.button == 0 && event.target != menu) {
         menu.style.display = "none";
@@ -141,7 +141,7 @@ function new_window(title) {
     open_windows.push(window);
     window.id = open_windows.length;
     focus_window(window);
-    
+
     window.close = () => {
         container.removeChild(window);
     }
@@ -191,10 +191,10 @@ function new_window(title) {
     dragElement(window);
 }
 
-function focus_window(window){
+function focus_window(window) {
     focused_window = window;
-    
-    for(let x of open_windows){
+
+    for (let x of open_windows) {
         x.style.opacity = "0.8";
         x.style.zIndex = "5";
     }
@@ -242,19 +242,33 @@ function dragElement(elmnt) {
 
 function create_alacritty_window(window) {
     let alacritty_container = document.createElement("div");
-    alacritty_container.style.padding = "3px";
+    alacritty_container.style.padding = "5px";
     alacritty_container.style.userSelect = "auto";
     alacritty_container.style.fontSize = "20px";
-    alacritty_container.style.overflow = "scroll";
     alacritty_container.style.height = "100%";
+    alacritty_container.style.maxHeight = "calc(100% - 65px)";
     alacritty_container.style.width = "100%";
-    
-    let prompt = document.createElement("div");
-    prompt.style.color = "white";
-    prompt.style.width = "100%";
-    prompt.innerHTML = "~ $";
+    alacritty_container.style.overflow = "auto";
 
-    alacritty_container.appendChild(prompt)
+    let prev_prompt;
+
+    function new_prompt() {
+        if(prev_prompt)prev_prompt.disabled = "true";
+        let prompt = document.createElement("input");
+        prompt.classList.add("shell-prompt");
+        prompt.type = "text";
+        prompt.value = "[~] $ ";
+        prompt.addEventListener("keydown", (event) => {
+            if (event.key == "Enter") {
+                new_prompt();
+            }
+        });
+        alacritty_container.appendChild(prompt);
+        prompt.focus();
+        prev_prompt = prompt;
+    }
+
+    new_prompt();
 
     window.appendChild(alacritty_container);
 }

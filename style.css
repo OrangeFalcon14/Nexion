@@ -5,6 +5,7 @@ html, body {
     width: 100%;
     font-family: Ubuntu;
     background-color: var(--color1);
+    box-sizing: border-box;
 }
 
 :root {
@@ -180,4 +181,15 @@ html, body {
     user-select: none;
     color: white;
     font-weight: 600;
+}
+
+.window .shell-prompt{
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    background-color: var(--color2);
+    color: white;
+    width: 99.5%;
+    font-family: "Ubuntu Mono";
 }
