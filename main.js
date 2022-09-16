@@ -11,6 +11,9 @@ const wallpaper_paths = [
 ];
 let current_wallpaper = 0;
 
+let open_windows = [];
+let focused_window;
+
 // Updating time
 const months = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
@@ -134,6 +137,11 @@ function new_window(title) {
         return btn;
     }
     let window = document.createElement("div");
+
+    open_windows.push(window);
+    window.id = open_windows.length;
+    focus_window(window);
+    
     window.close = () => {
         container.removeChild(window);
     }
@@ -153,6 +161,9 @@ function new_window(title) {
         window.style.height = "750px";
         window.style.width = "1000px";
         window.style.transition = "";
+    }
+    window.onclick = () => {
+        focus_window(window);
     }
     window.classList.add("window");
 
@@ -178,6 +189,18 @@ function new_window(title) {
     dragElement(window);
 }
 
+function focus_window(window){
+    focused_window = window;
+    
+    for(let x of open_windows){
+        x.style.opacity = "0.8";
+        x.style.zIndex = "5";
+    }
+    focused_window.style.opacity = "1";
+    focused_window.style.zIndex = "6";
+    console.log(window);
+}
+
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -188,6 +211,7 @@ function dragElement(elmnt) {
     }
 
     function dragMouseDown(e) {
+        focus_window(elmnt);
         e = e || window.event;
         e.preventDefault();
         pos3 = e.clientX;
