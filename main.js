@@ -73,7 +73,6 @@ container.addEventListener("mousedown", (event) => {
 })
 
 function changeBackground() {
-    console.log("Hello");
     container.style.backgroundImage = `url('${wallpaper_paths[++current_wallpaper % wallpaper_paths.length]}')`;
 }
 
@@ -112,7 +111,6 @@ function new_window(title) {
         window.style.left = "0px";
         window.style.height = `calc(100% - 62px)`;
         window.style.width = "100%";
-        console.log(window.style.transition);
         window.style.transition = "";
     }
     window.minimize = () => {
