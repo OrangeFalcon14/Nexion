@@ -54,48 +54,9 @@ update_time();
 setInterval(update_time, 1000);
 
 // right click menu
-container.addEventListener("contextmenu", (event) => {
-    event.preventDefault();
-});
-// let menu;
-// container.addEventListener("mousedown", (event) => {
-//     function create_menu_item(text, onclick) {
-//         let li = document.createElement("li");
-//         li.classList.add("menu-item");
-//         li.textContent = text;
-//         if (onclick) li.onclick = () => {
-//             console.log("You clicked me!"); onclick()
-//         };
-//         return li;
-//     }
-//     if (event.button == 0 && menu && event.target != menu) {
-//         container.removeChild(menu);
-//         menu = undefined;
-//     }
-//     if (event.button == 0) return;
-
-//     event.preventDefault();
-//     if (!menu) {
-//         menu = document.createElement("div");
-//         menu.classList.add("menu");
-//         // menu.innerHTML = `
-//         // <li class="menu-item" onclick="eval("changeBackground()")">Change Desktop Wallpaper</li>
-//         // <li class="menu-item">This is a menu</li>
-//         // <li class="menu-item">This is a menu</li>
-//         // `
-
-//         let menu_item_changeBackground = create_menu_item("Change Desktop Background", changeBackground);
-//         console.log(menu_item_changeBackground.onclick);
-
-//         menu.appendChild(menu_item_changeBackground);
-
-//         menu.style.position = "fixed";
-//         menu.style.top = event.pageY + "px";
-//         menu.style.left = event.pageX + "px";
-
-//         container.appendChild(menu);
-//     }
-// })
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+}, false);
 
 container.addEventListener("mousedown", (event) => {
     if (event.target != container) return;
