@@ -169,7 +169,7 @@ function new_window(title) {
 
     let titlebar = document.createElement("div");
     titlebar.classList.add("window-titlebar");
-    titlebar.id = "titlebar";
+    titlebar.id = window.id + "titlebar";
     window.appendChild(titlebar);
 
     let close_btn = create_titlebar_button("close", "assets/icons/system/window-close.svg", window.close);

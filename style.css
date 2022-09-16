@@ -118,14 +118,14 @@ html, body {
     border-radius: 10px;
 }
 
-.window #titlebar{
+.window .window-titlebar{/* #titlebar{ */
     height: 50px;
     width: 100%;
     background-color: var(--color1);
     border-radius: 10px;
 }
 
-.window #titlebar .titlebar-btn{
+.window .window-titlebar .titlebar-btn{
     position: relative;
     top: 25%;
     left: 1%;
@@ -143,7 +143,7 @@ html, body {
     background-color: #FF2946;
 } */
 
-.window #titlebar .close-btn{
+.window .window-titlebar .close-btn{
     background-color: #FF2946;
 }
 /* .window #titlebar .close-btn:hover{
@@ -152,7 +152,7 @@ html, body {
     background-size: cover;
 } */
 
-.window #titlebar .minimize-btn{
+.window .window-titlebar .minimize-btn{
     /* padding-top: 0px; */
     background-color: #00FF7A;
 }
@@ -162,7 +162,7 @@ html, body {
     background-repeat: no-repeat;
 } */
 
-.window #titlebar .maximize-btn{
+.window .window-titlebar .maximize-btn{
     background-color: #E4FF84;
 }
 /* .window #titlebar .maximize-btn:hover{
@@ -170,7 +170,7 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover;
 } */
-.window #titlebar .window-title{
+.window .window-titlebar .window-title{
     /* position: relative;
     top: 0; */
     margin-top: 0px;
