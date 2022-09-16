@@ -185,6 +185,8 @@ function new_window(title) {
     window_title.innerHTML = title;
     titlebar.appendChild(window_title);
 
+    if (title == "Alacritty") create_alacritty_window(window);
+
     container.appendChild(window);
     dragElement(window);
 }
@@ -236,4 +238,23 @@ function dragElement(elmnt) {
         document.onmouseup = null;
         document.onmousemove = null;
     }
+}
+
+function create_alacritty_window(window) {
+    let alacritty_container = document.createElement("div");
+    alacritty_container.style.padding = "3px";
+    alacritty_container.style.userSelect = "auto";
+    alacritty_container.style.fontSize = "20px";
+    alacritty_container.style.overflow = "scroll";
+    alacritty_container.style.height = "100%";
+    alacritty_container.style.width = "100%";
+    
+    let prompt = document.createElement("div");
+    prompt.style.color = "white";
+    prompt.style.width = "100%";
+    prompt.innerHTML = "~ $";
+
+    alacritty_container.appendChild(prompt)
+
+    window.appendChild(alacritty_container);
 }
