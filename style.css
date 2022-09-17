@@ -21,6 +21,11 @@ html, body {
     src: url("assets/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf");
 }
 
+@font-face {
+    font-family: Ubuntu;
+    src: url("assets/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Nerd\ Font\ Complete.ttf");
+}
+
 #container {
     height: 100%;
     width: 100%;
@@ -193,4 +198,29 @@ html, body {
     color: white;
     width: 99.5%;
     font-family: "Ubuntu Mono";
+}
+
+.files-sidebar-link{
+    user-select: none;
+    padding: 7.5px;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 18px;
+}
+.files-sidebar-link:hover{
+    background-color: var(--color2);
+}
+.folder-icon{
+    padding: 10px;
+    margin: 10px;
+    float:none;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-image: url("assets/icons/system/folder.svg");
+    background-size: cover;
+    transition: opacity 0.25s;
+}
+.folder-icon:hover{
+    opacity: 0.5;
 }

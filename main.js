@@ -246,14 +246,43 @@ function create_files_window(window){
     files_container.style.overflow = "auto";
     
     let sidebar = document.createElement("div");
-    sidebar.style.position = "relative";
-    sidebar.style.left = "0";
+    sidebar.style.float = "left";
     sidebar.style.height = "100%";
     sidebar.style.width = "25%";
     sidebar.style.maxWidth = "25vh";
     sidebar.style.backgroundColor = "var(--color3)";
 
+    let links_titles = [" Home", " Desktop", " Documents", " Downloads", " Pictures", "辶 Videos", " Trash"];
+    for (let link_title of links_titles) {
+        let link = document.createElement("div");
+        link.innerHTML = `${link_title}`;
+        link.classList.add("files-sidebar-link");
+        sidebar.appendChild(link);
+    }
+
     files_container.appendChild(sidebar);
+
+    let files_display_area = document.createElement("div");
+    files_display_area.style.float = "left"
+    files_display_area.style.display = "flex";
+    files_display_area.style.flexDirection = "row";
+    files_display_area.style.flexWrap = "wrap";
+    files_display_area.style.alignContent = "center";
+    files_display_area.style.height = "auto";
+    files_display_area.style.width = "75%";
+    // files_display_area.style.minWidth = "75%";
+    // files_display_area.style.maxWidth = "75vh";
+    files_display_area.style.overflow = "auto";
+    
+    for (let i = 0; i < 20; i++) {
+        let folder_icon = document.createElement("span");
+        folder_icon.style.height = folder_icon.style.width = "100px";
+        folder_icon.classList.add("folder-icon");
+        
+        files_display_area.appendChild(folder_icon);
+        
+    }    
+    files_container.appendChild(files_display_area);
 
     window.appendChild(files_container);
 }
