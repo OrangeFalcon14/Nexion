@@ -145,6 +145,7 @@ function new_window(title) {
     titlebar.appendChild(window_title);
 
     if (title == "Alacritty") create_alacritty_window(window);
+    if (title == "Files") create_files_window(window);
 
     container.appendChild(window);
     dragElement(window);
@@ -230,4 +231,29 @@ function create_alacritty_window(window) {
     new_prompt();
 
     window.appendChild(alacritty_container);
+}
+
+function create_files_window(window){
+    let files_container = document.createElement("div");
+    files_container.style.color = "white";
+    files_container.style.userSelect = "auto";
+    files_container.style.fontSize = "20px";
+    files_container.style.height = "100%";
+    files_container.style.maxHeight = "calc(100% - 50px)";
+    files_container.style.borderRadius = "0px 0px 10px 10px";
+    // files_container.style.width = "calc(100% - 10px)";
+    files_container.style.width = "100%";
+    files_container.style.overflow = "auto";
+    
+    let sidebar = document.createElement("div");
+    sidebar.style.position = "relative";
+    sidebar.style.left = "0";
+    sidebar.style.height = "100%";
+    sidebar.style.width = "25%";
+    sidebar.style.maxWidth = "25vh";
+    sidebar.style.backgroundColor = "var(--color3)";
+
+    files_container.appendChild(sidebar);
+
+    window.appendChild(files_container);
 }
