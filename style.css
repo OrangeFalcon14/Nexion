@@ -118,6 +118,7 @@ html, body {
     position: absolute;
     top: 100px;
     left: 10px;
+    transition: width 0.25s, height 0.25s;
     height: 750px;
     width: 1000px;
     z-index: 9;
