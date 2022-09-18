@@ -202,7 +202,6 @@ function dragElement(elmnt) {
 
 function create_alacritty_window(window) {
     let alacritty_container = document.createElement("div");
-    alacritty_container.style.padding = "5px";
     alacritty_container.style.userSelect = "auto";
     alacritty_container.style.fontSize = "20px";
     alacritty_container.style.height = "100%";
