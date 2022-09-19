@@ -14,6 +14,8 @@ html, body {
     --color3: #111118;
     --dock-height: 62px;
     --menu-width: 300px;
+    --app-menu-height: 500px;
+    --app-menu-width: 500px;
 }
 
 @font-face {
@@ -224,4 +226,52 @@ html, body {
 }
 .folder-icon:hover{
     opacity: 0.5;
+}
+
+#applications-menu-btn{
+    margin-left: 5px;
+}
+#applications-menu{
+    display: none;
+    position: fixed;
+    padding: 10px;
+    border-radius: 10px;
+    top: 27px;
+    left: 5px;
+    width: var(--app-menu-width);
+    min-width: var(--app-menu-width);
+    height: var(--app-menu-height);
+    max-height: var(--app-menu-height);
+    overflow: auto;
+    background-color: var(--color1);
+    transition: max-height 0.5s;
+}
+#apps-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.applications-menu-app{
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+    width: fit-content;
+    max-width: 84px;
+    max-height: 84px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.applications-menu-app:hover{
+    background-color: var(--color2);
+}
+#applications-menu-search{
+    color:white;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    background-color: var(--color2);
+    border-radius: 10px;
+    padding: 10px;
+    width: calc(100% - 20px);
 }

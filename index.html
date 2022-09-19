@@ -14,6 +14,32 @@
     </div>
     <div id="container">
         <div id="topbar">
+            <span id="applications-menu-btn" onclick="toggle_applications_menu()">Applications</span>
+            <div id="applications-menu">
+                <input type="text" name="applications-menu-search" id="applications-menu-search" placeholder="Search..." /><br><br>
+                <div id="apps-container">
+                    <div class="applications-menu-app" title="Alacritty" onclick="new_window('Alacritty')">
+                        <img src="assets/icons/apps/Alacritty.svg" />
+                        <br>Alacritty
+                    </div>
+                    <div class="applications-menu-app" title="Files" onclick="new_window('Files')">
+                        <img src="assets/icons/apps/nautilus.svg" />
+                        <br>Files
+                    </div>
+                    <div class="applications-menu-app" title="Firefox" onclick="new_window('Firefox')">
+                        <img src="assets/icons/apps/firefox.svg" />
+                        <br>Firefox
+                    </div>
+                    <div class="applications-menu-app" title="Pycharm Community Edition" onclick="new_window('PyCharm Community Edition')">
+                        <img src="assets/icons/apps/pycharm.svg" />
+                        <br>Pycharm Community Edition
+                    </div>
+                    <div class="applications-menu-app" title="Visual Studio Code" onclick="new_window('Visual Studio Code')">
+                        <img src="assets/icons/apps/visual-studio-code.svg" />
+                        <br>Visual Studio Code
+                    </div>
+                </div>
+            </div>
             <span id="date_time"></span>
             <span id="sys_tray">  </span>
         </div>

@@ -1,5 +1,8 @@
 const container = document.getElementById("container");
 const dock = document.getElementById("dock");
+const applications_menu = document.getElementById("applications-menu");
+if(applications_menu.style.display == ""){applications_menu.style.display = "none";console.log(applications_menu.style.display);}
+const apps_container = document.getElementById("apps-container");
 
 const wallpaper_paths = [
     "assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg",
@@ -59,6 +62,8 @@ document.addEventListener('contextmenu', function(e) {
 }, false);
 
 container.addEventListener("mousedown", (event) => {
+    // if(event.target != applications_menu)applications_menu.style.display = "none";
+
     if (event.target != container) return;
     let menu = document.getElementById("menu");
     if (event.button == 0 && event.target != menu) {
@@ -77,6 +82,7 @@ function changeBackground() {
 }
 
 function new_window(title) {
+    if(applications_menu.style.display == "block")toggle_applications_menu();
     function create_titlebar_button(type, icon, onclick) {
         let btn = document.createElement("button");
         btn.classList.add("titlebar-btn");
@@ -284,4 +290,45 @@ function create_files_window(window){
     files_container.appendChild(files_display_area);
 
     window.appendChild(files_container);
+}
+
+function toggle_applications_menu() {
+    for(let i of document.getElementById("apps-container").children)i.style.display = "block";
+    if(applications_menu.style.display == "block"){
+        applications_menu.style.display = "none";
+        applications_menu.style.maxHeight = "0";
+    }else if(applications_menu.style.display == "none"){
+        applications_menu.style.display = "block";
+        applications_menu.style.maxHeight = "var(--app-menu-height)";
+    }
+    document.getElementById("applications-menu-search").focus();
+
+}
+
+function is_substring(string1, string2){
+    return string1.indexOf(string2) != -1;
+}
+
+document.getElementById("applications-menu-search").onkeyup = (event) => {
+    if (event.key == "Escape"){
+        toggle_applications_menu();
+        return;
+    }
+    let search_string = document.getElementById("applications-menu-search").value.toLowerCase();
+    let apps_list = document.getElementById("apps-container").children;
+    if(search_string == ""){
+        for (let app of apps_list) {
+            app.style.display = "block";
+        }
+        return;
+    }
+    for (let app of apps_list) {
+        let name = app.title.toLowerCase();
+        if (!is_substring(name, search_string)){
+            app.style.display = "none";
+        }else{
+            app.style.display = "block";
+        }
+    }
+
 }
