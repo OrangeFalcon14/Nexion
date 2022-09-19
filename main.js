@@ -152,6 +152,7 @@ function new_window(title) {
 
     if (title == "Alacritty") create_alacritty_window(window);
     if (title == "Files") create_files_window(window);
+    if (title == "Text Editor") create_text_editor_window(window);
 
     container.appendChild(window);
     dragElement(window);
@@ -290,6 +291,32 @@ function create_files_window(window){
     files_container.appendChild(files_display_area);
 
     window.appendChild(files_container);
+}
+
+function create_text_editor_window(window) {
+    let text_editor_container = document.createElement("div");
+    text_editor_container.style.userSelect = "auto";
+    text_editor_container.style.fontSize = "20px";
+    text_editor_container.style.height = "100%";
+    text_editor_container.style.maxHeight = "calc(100% - 50px)";
+    text_editor_container.style.width = "100%";
+    text_editor_container.style.overflow = "auto";
+
+    let textarea = document.createElement("div");
+    textarea.contentEditable = "true";
+    textarea.style.height = "calc(100% - 10px)";
+    textarea.style.maxHeight = "calc(100% - 10px)";
+    textarea.style.width = "calc(100% - 10px)";
+    textarea.style.border = "none";
+    textarea.style.outline = "none";
+    textarea.style.float = "left";
+    textarea.style.color = "white";
+    textarea.style.padding = "5px";
+    textarea.style.overflow = "auto";
+
+    text_editor_container.appendChild(textarea);
+
+    window.appendChild(text_editor_container);
 }
 
 function toggle_applications_menu() {
