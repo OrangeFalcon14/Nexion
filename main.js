@@ -156,6 +156,7 @@ function new_window(title) {
     if (title == "Alacritty") create_alacritty_window(window);
     if (title == "Files") create_files_window(window);
     if (title == "Text Editor") create_text_editor_window(window);
+    if (title == "Settings") create_settings_window(window);
 
     container.appendChild(window);
     dragElement(window);
@@ -320,6 +321,19 @@ function create_text_editor_window(window) {
     text_editor_container.appendChild(textarea);
 
     window.appendChild(text_editor_container);
+}
+
+function create_settings_window(window) {
+    let settings_container = document.createElement("div");
+    settings_container.style.userSelect = "auto";
+    settings_container.style.fontSize = "20px";
+    settings_container.style.height = "100%";
+    settings_container.style.maxHeight = "calc(100% - 50px)";
+    settings_container.style.width = "100%";
+    settings_container.style.overflow = "auto";
+    settings_container.style.color = "white";
+
+    window.appendChild(settings_container);
 }
 
 function toggle_applications_menu() {
