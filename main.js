@@ -19,6 +19,7 @@ let current_wallpaper = 0;
 
 let open_windows = [];
 let focused_window;
+let time_format = "AM/PM";
 
 // Updating time
 const months = ["January", "February", "March", "April", "May", "June",
@@ -27,8 +28,10 @@ const months = ["January", "February", "March", "April", "May", "June",
 const date_time = document.getElementById("date_time");
 function update_time() {
     const date = new Date();
+    let hours = (time_format == "24-Hour")? date.getHours(): date.getHours() - 12;
     let seconds = (date.getSeconds() < 10) ? `0${date.getSeconds()}` : date.getSeconds();
     let minutes = (date.getMinutes() < 10) ? `0${date.getMinutes()}` : date.getMinutes();
+    let am_pm = (date.getHours() < 12)? "AM" : "PM";
     let day = date.getDay();
     switch (day) {
         case 0:
@@ -53,7 +56,7 @@ function update_time() {
             day = "Sat";
             break;
     }
-    let date_time_str = `${day} ${months[date.getMonth()].slice(0, 3)} ${date.getDate()} ${date.getHours()}:${minutes}:${seconds}`
+    let date_time_str = (time_format == "24-Hour")?`${day} ${months[date.getMonth()].slice(0, 3)} ${date.getDate()} ${hours}:${minutes}:${seconds}`: `${day} ${months[date.getMonth()].slice(0, 3)} ${date.getDate()} ${hours}:${minutes}:${seconds} ${am_pm}`
     date_time.innerHTML = date_time_str;
 }
 update_time();
@@ -332,6 +335,36 @@ function create_settings_window(window) {
     settings_container.style.width = "100%";
     settings_container.style.overflow = "auto";
     settings_container.style.color = "white";
+    settings_container.style.padding = "10px";
+    // settings_container.style.textAlign = "center";
+    
+
+    let time_format_container = document.createElement("div");
+
+    let time_format_label = document.createElement("label");
+    time_format_label.innerHTML = "Time Format: ";
+    time_format_label.htmlFor = "time_format_selector";
+    time_format_container.appendChild(time_format_label);
+    
+    let time_format_selector = document.createElement("select");
+    time_format_selector.name = "time_format_selector";
+    time_format_selector.id = "time_format_selector";
+    time_format_selector.onchange = () => {
+        time_format = time_format_selector.value;
+        update_time();
+    }
+    time_format_container.appendChild(time_format_selector)
+    
+    let am_pm_option = document.createElement("option");
+    am_pm_option.value = "AM/PM";
+    am_pm_option.innerHTML = "AM/PM";
+    time_format_selector.appendChild(am_pm_option);
+    let twentyfourhour_option = document.createElement("option");
+    twentyfourhour_option.value = "24-Hour";
+    twentyfourhour_option.innerHTML = "24-Hour";
+    time_format_selector.appendChild(twentyfourhour_option);
+
+    settings_container.appendChild(time_format_container);
 
     window.appendChild(settings_container);
 }
