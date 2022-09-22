@@ -1,11 +1,11 @@
 const container = document.getElementById("container");
 const dock = document.getElementById("dock");
 const applications_menu = document.getElementById("applications-menu");
-if(applications_menu.style.display == ""){applications_menu.style.display = "none";console.log(applications_menu.style.display);}
+if (applications_menu.style.display == "") { applications_menu.style.display = "none"; console.log(applications_menu.style.display); }
 const apps_container = document.getElementById("apps-container");
 const notifications_calendar_dropdown = document.getElementById("notifications-calendar-dropdown");
 const calendar = document.getElementById("calendar");
-if(notifications_calendar_dropdown.style.display == ""){notifications_calendar_dropdown.style.display = "none";}
+if (notifications_calendar_dropdown.style.display == "") { notifications_calendar_dropdown.style.display = "none"; }
 
 const wallpaper_paths = [
     "assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg",
@@ -60,7 +60,7 @@ update_time();
 setInterval(update_time, 1000);
 
 // right click menu
-document.addEventListener('contextmenu', function(e) {
+document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
 }, false);
 
@@ -85,7 +85,7 @@ function changeBackground() {
 }
 
 function new_window(title) {
-    if(applications_menu.style.display == "block")toggle_applications_menu();
+    if (applications_menu.style.display == "block") toggle_applications_menu();
     function create_titlebar_button(type, icon, onclick) {
         let btn = document.createElement("button");
         btn.classList.add("titlebar-btn");
@@ -222,7 +222,7 @@ function create_alacritty_window(window) {
     let prev_prompt;
 
     function new_prompt() {
-        if(prev_prompt)prev_prompt.disabled = "true";
+        if (prev_prompt) prev_prompt.disabled = "true";
         let prompt = document.createElement("input");
         prompt.classList.add("shell-prompt");
         prompt.type = "text";
@@ -242,7 +242,7 @@ function create_alacritty_window(window) {
     window.appendChild(alacritty_container);
 }
 
-function create_files_window(window){
+function create_files_window(window) {
     let files_container = document.createElement("div");
     files_container.style.color = "white";
     files_container.style.userSelect = "auto";
@@ -253,7 +253,7 @@ function create_files_window(window){
     // files_container.style.width = "calc(100% - 10px)";
     files_container.style.width = "100%";
     files_container.style.overflow = "auto";
-    
+
     let sidebar = document.createElement("div");
     sidebar.style.float = "left";
     sidebar.style.height = "100%";
@@ -282,15 +282,15 @@ function create_files_window(window){
     // files_display_area.style.minWidth = "75%";
     // files_display_area.style.maxWidth = "75vh";
     files_display_area.style.overflow = "auto";
-    
+
     for (let i = 0; i < 20; i++) {
         let folder_icon = document.createElement("span");
         folder_icon.style.height = folder_icon.style.width = "100px";
         folder_icon.classList.add("folder-icon");
-        
+
         files_display_area.appendChild(folder_icon);
-        
-    }    
+
+    }
     files_container.appendChild(files_display_area);
 
     window.appendChild(files_container);
@@ -323,11 +323,11 @@ function create_text_editor_window(window) {
 }
 
 function toggle_applications_menu() {
-    for(let i of document.getElementById("apps-container").children)i.style.display = "block";
-    if(applications_menu.style.display == "block"){
+    for (let i of document.getElementById("apps-container").children) i.style.display = "block";
+    if (applications_menu.style.display == "block") {
         applications_menu.style.display = "none";
         applications_menu.style.maxHeight = "0";
-    }else if(applications_menu.style.display == "none"){
+    } else if (applications_menu.style.display == "none") {
         applications_menu.style.display = "block";
         applications_menu.style.maxHeight = "var(--app-menu-height)";
     }
@@ -335,18 +335,18 @@ function toggle_applications_menu() {
 
 }
 
-function is_substring(string1, string2){
+function is_substring(string1, string2) {
     return string1.indexOf(string2) != -1;
 }
 
 document.getElementById("applications-menu-search").onkeyup = (event) => {
-    if (event.key == "Escape"){
+    if (event.key == "Escape") {
         toggle_applications_menu();
         return;
     }
     let search_string = document.getElementById("applications-menu-search").value.toLowerCase();
     let apps_list = document.getElementById("apps-container").children;
-    if(search_string == ""){
+    if (search_string == "") {
         for (let app of apps_list) {
             app.style.display = "block";
         }
@@ -354,9 +354,9 @@ document.getElementById("applications-menu-search").onkeyup = (event) => {
     }
     for (let app of apps_list) {
         let name = app.title.toLowerCase();
-        if (!is_substring(name, search_string)){
+        if (!is_substring(name, search_string)) {
             app.style.display = "none";
-        }else{
+        } else {
             app.style.display = "block";
         }
     }
@@ -364,9 +364,9 @@ document.getElementById("applications-menu-search").onkeyup = (event) => {
 }
 
 function toggle_notifications_calendar_dropdown() {
-    if(notifications_calendar_dropdown.style.display == "block"){
+    if (notifications_calendar_dropdown.style.display == "block") {
         notifications_calendar_dropdown.style.display = "none";
-    }else if(notifications_calendar_dropdown.style.display == "none"){
+    } else if (notifications_calendar_dropdown.style.display == "none") {
         notifications_calendar_dropdown.style.display = "block";
     }
 }
