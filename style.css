@@ -16,6 +16,8 @@ html, body {
     --menu-width: 300px;
     --app-menu-height: 500px;
     --app-menu-width: 500px;
+    --notifications-calendar-dropdown-height: 300px;
+    --notifications-calendar-dropdown-width: 600px;
 }
 
 @font-face {
@@ -275,3 +277,60 @@ html, body {
     padding: 10px;
     width: calc(100% - 20px);
 }
+
+#notifications-calendar-dropdown{
+    position: fixed;
+    width: var(--notifications-calendar-dropdown-width);
+    height: var(--notifications-calendar-dropdown-height);
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+    background-color: var(--color1);
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+#notifications-calendar-dropdown #notifications{
+    width: calc(50% - 5px);
+    height: 100%;
+    float: left;
+}
+#notifications-calendar-dropdown #calendar{
+    width: calc(50% - 5px);
+    height: 100%;
+    float: right;
+}
+/* #calendar{
+    overflow: auto;
+}
+#calendar .day{
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    color: #717171;
+}
+#calendar .day:hover {
+    background-color: #717171;
+    color: black;
+} */
+/* 
+#calendar{
+    height: 100%;
+    display: grid;
+    gap: 5px;
+}
+#calendar .day{
+    font-size: 15px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 5px;
+    border-radius: 10px;
+    color: #717171;
+}
+#calendar .day:hover {
+    background-color: #717171;
+    color: black;
+}
+ */

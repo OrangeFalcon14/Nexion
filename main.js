@@ -3,6 +3,9 @@ const dock = document.getElementById("dock");
 const applications_menu = document.getElementById("applications-menu");
 if(applications_menu.style.display == ""){applications_menu.style.display = "none";console.log(applications_menu.style.display);}
 const apps_container = document.getElementById("apps-container");
+const notifications_calendar_dropdown = document.getElementById("notifications-calendar-dropdown");
+const calendar = document.getElementById("calendar");
+if(notifications_calendar_dropdown.style.display == ""){notifications_calendar_dropdown.style.display = "none";}
 
 const wallpaper_paths = [
     "assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg",
@@ -359,3 +362,50 @@ document.getElementById("applications-menu-search").onkeyup = (event) => {
     }
 
 }
+
+function toggle_notifications_calendar_dropdown() {
+    if(notifications_calendar_dropdown.style.display == "block"){
+        notifications_calendar_dropdown.style.display = "none";
+    }else if(notifications_calendar_dropdown.style.display == "none"){
+        notifications_calendar_dropdown.style.display = "block";
+    }
+}
+
+/* function create_calendar(){
+    let date = 1;
+    calendar.innerHTML = "<br>"
+    for (let i = 0; i < 6; i++) {
+        for(let j = 0; j < 5; j ++){
+            let day = document.createElement("span");
+            day.classList.add("day");
+            // if(date < 10)date = "0" + date;
+            if(date < 10) day.innerHTML = "0" + date;
+            else day.innerHTML = date;
+            calendar.appendChild(day);
+            date += 1;
+        }
+        calendar.innerHTML += "<br>";
+    }
+} */
+/* function create_calendar(){
+    let date = 1;
+    calendar.innerHTML = "<br>";
+    for (let i = 0; i < 6; i++) {
+        for(let j = 0; j < 5; j ++){
+            let day = document.createElement("div");
+            day.classList.add("day");
+
+            day.style.gridColumnStart = j;
+            day.style.gridColumnEnd = j + 1;
+            day.style.gridRowStart = i;
+            day.style.gridRowEnd = i + 1;
+
+            if(date < 10) day.innerHTML = "0" + date;
+            else day.innerHTML = date;
+            calendar.appendChild(day);
+            date += 1;
+        }
+    }
+}
+create_calendar();
+ */
