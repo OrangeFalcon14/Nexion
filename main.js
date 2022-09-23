@@ -365,6 +365,46 @@ function create_settings_window(window) {
 
     settings_container.appendChild(time_format_container);
 
+    let theme_selector_container = document.createElement("div");
+
+    let theme_selector_label = document.createElement("label");
+    theme_selector_label.innerHTML = "Theme: ";
+    theme_selector_label.htmlFor = "theme_selector";
+    theme_selector_container.appendChild(theme_selector_label);
+    
+    let theme_selector = document.createElement("select");
+    theme_selector.name = "theme_selector";
+    theme_selector.id = "theme_selector";
+    theme_selector.onclick = () => {
+        if (theme_selector.value == "Dark"){
+            if(document.body.classList.contains("light")){
+                document.body.classList.remove("light");
+            }
+        }
+        else if (theme_selector.value == "Light"){
+            if(!document.body.classList.contains("light")){
+                document.body.classList.add("light");
+            }
+        }
+        
+    }
+    if (document.body.classList.contains("light")){
+        theme_selector.value = "Light";
+    }
+
+    theme_selector_container.appendChild(theme_selector)
+    
+    let dark_option = document.createElement("option");
+    dark_option.value = "Dark";
+    dark_option.innerHTML = "Dark";
+    theme_selector.appendChild(dark_option);
+    let light_option = document.createElement("option");
+    light_option.value = "Light";
+    light_option.innerHTML = "Light";
+    theme_selector.appendChild(light_option);
+
+    settings_container.appendChild(theme_selector_container);
+
     window.appendChild(settings_container);
 }
 
