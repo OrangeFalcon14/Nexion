@@ -7,6 +7,7 @@ body {
     font-family: Ubuntu;
     background-color: var(--color1);
     box-sizing: border-box;
+    color: white;
 }
 
 :root {
@@ -19,6 +20,24 @@ body {
     --app-menu-width: 500px;
     --notifications-calendar-dropdown-height: 300px;
     --notifications-calendar-dropdown-width: 600px;
+}
+.light {
+    --color1: #fff;
+    --color2: #eee;
+    --color3: #ddd;
+    color: black;
+}
+.light .window .shell-prompt{
+    color: black;
+}
+.light select{
+    color: black;
+}
+.light #applications-menu-search{
+    color: black;
+}
+.light #container{
+    background-image: url("assets/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg");
 }
 
 @font-face {
@@ -42,7 +61,6 @@ body {
 #dock {
     user-select: none;
     z-index: 10;
-    color: white;
     height: var(--dock-height);
     width: 100%;
     position: fixed;
@@ -54,7 +72,6 @@ body {
     user-select: none;
     font-size: 0.95em;
     z-index: 10;
-    color: white;
     height: 22px;
     width: 100%;
     position: fixed;
@@ -102,7 +119,6 @@ body {
     max-width: var(--menu-width);
     min-width: var(--menu-width);
     width: var(--menu-width);
-    color: #ddd;
     background-color: var(--color1);
     padding: 2px;
     border-radius: 2px;
@@ -197,7 +213,6 @@ body {
     height: 100%;
     text-align: center;
     user-select: none;
-    color: white;
     font-weight: 600;
 }
 

@@ -13,7 +13,9 @@ const wallpaper_paths = [
     "assets/wallpapers/hao-wang-pVq6YhmDPtk-unsplash.jpg",
     "assets/wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg",
     "assets/wallpapers/pawel-czerwinski-tMbQpdguDVQ-unsplash.jpg",
-    "assets/wallpapers/richard-horvath-_nWaeTF6qo0-unsplash.jpg"
+    "assets/wallpapers/richard-horvath-_nWaeTF6qo0-unsplash.jpg",
+    "assets/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg",
+    "assets/wallpapers/wladislaw-sokolowskij-0vw4InAC-yM-unsplash.jpg"
 ];
 let current_wallpaper = 0;
 
@@ -248,7 +250,6 @@ function create_alacritty_window(window) {
 
 function create_files_window(window) {
     let files_container = document.createElement("div");
-    files_container.style.color = "white";
     files_container.style.userSelect = "auto";
     files_container.style.fontSize = "20px";
     files_container.style.height = "100%";
@@ -317,7 +318,6 @@ function create_text_editor_window(window) {
     textarea.style.border = "none";
     textarea.style.outline = "none";
     textarea.style.float = "left";
-    textarea.style.color = "white";
     textarea.style.padding = "5px";
     textarea.style.overflow = "auto";
 
@@ -334,7 +334,6 @@ function create_settings_window(window) {
     settings_container.style.maxHeight = "calc(100% - 50px)";
     settings_container.style.width = "100%";
     settings_container.style.overflow = "auto";
-    settings_container.style.color = "white";
     settings_container.style.padding = "10px";
     // settings_container.style.textAlign = "center";
     
