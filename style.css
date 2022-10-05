@@ -61,11 +61,25 @@ body {
 #dock {
     user-select: none;
     z-index: 10;
+    position: fixed;
+    background-color: var(--color1);
+}
+
+.panel-dock{
     height: var(--dock-height);
     width: 100%;
-    position: fixed;
     bottom: 0;
-    background-color: var(--color1);
+}
+
+.compact-dock{
+    height: auto;
+    width: fit-content;
+    max-width: fit-content;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
 }
 
 #topbar {
