@@ -405,6 +405,40 @@ function create_settings_window(window) {
 
     settings_container.appendChild(theme_selector_container);
 
+
+    let dock_style_container = document.createElement("div");
+
+    let dock_style_label = document.createElement("label");
+    dock_style_label.innerHTML = "Dock Style: ";
+    dock_style_label.htmlFor = "dock_style_selector";
+    dock_style_container.appendChild(dock_style_label);
+    
+    let dock_style_selector = document.createElement("select");
+    dock_style_selector.name = "dock_style_selector";
+    dock_style_selector.id = "dock_style_selector";
+    dock_style_selector.onchange = () => {
+        if(dock.classList.contains("panel-dock")){
+            dock.classList.remove("panel-dock");
+            dock.classList.add("compact-dock");
+        }else if(dock.classList.contains("compact-dock")){
+            dock.classList.remove("compact-dock");
+            dock.classList.add("panel-dock");
+        }
+
+    }
+    dock_style_container.appendChild(dock_style_selector)
+    
+    let default_option = document.createElement("option");
+    default_option.value = "Default";
+    default_option.innerHTML = "Default";
+    dock_style_selector.appendChild(default_option);
+    let compact_option = document.createElement("option");
+    compact_option.value = "Compact";
+    compact_option.innerHTML = "Compact";
+    dock_style_selector.appendChild(compact_option);
+
+    settings_container.appendChild(dock_style_container);
+
     window.appendChild(settings_container);
 }
 
