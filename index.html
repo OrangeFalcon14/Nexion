@@ -1,84 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexion</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu Mono">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="menu" id="menu">
-        <li class="menu-item" onclick="changeBackground()">Change Desktop Wallpaper</li>
-    </div>
-    <div id="container">
-        <div id="topbar">
-            <span id="applications-menu-btn" onclick="toggle_applications_menu()">Applications</span>
-            <div id="applications-menu">
-                <input type="text" name="applications-menu-search" id="applications-menu-search" placeholder="Search..." /><br><br>
-                <div id="apps-container">
-                    <div class="applications-menu-app" title="Alacritty" onclick="new_window('Alacritty')">
-                        <img src="assets/icons/apps/alacritty.svg" />
-                        <br>Alacritty
-                    </div>
-                    <div class="applications-menu-app" title="Files" onclick="new_window('Files')">
-                        <img src="assets/icons/apps/nautilus.svg" />
-                        <br>Files
-                    </div>
-                    <div class="applications-menu-app" title="Firefox" onclick="new_window('Firefox')">
-                        <img src="assets/icons/apps/firefox.svg" />
-                        <br>Firefox
-                    </div>
-                    <div class="applications-menu-app" title="Pycharm Community Edition" onclick="new_window('PyCharm Community Edition')">
-                        <img src="assets/icons/apps/pycharm community edition.svg" />
-                        <br>Pycharm Community Edition
-                    </div>
-                    <div class="applications-menu-app" title="Settings" onclick="new_window('Settings')">
-                        <img src="assets/icons/apps/settings.svg" />
-                        <br>Settings
-                    </div>
-                    <div class="applications-menu-app" title="Text Editor" onclick="new_window('Text Editor')">
-                        <img src="assets/icons/apps/text editor.svg" />
-                        <br>Text Editor
-                    </div>
-                    <div class="applications-menu-app" title="Visual Studio Code" onclick="new_window('Visual Studio Code')">
-                        <img src="assets/icons/apps/visual studio code.svg" />
-                        <br>Visual Studio Code
-                    </div>
-                </div>
-            </div>
-            <span id="date_time" onclick="toggle_notifications_calendar_dropdown()"></span>
-            <div id="notifications-calendar-dropdown">
-                <div id="notifications">
-                    <span style="font-size: 50px; color: #515151; position: relative; top: 30%; left: 50%;"></span><br>
-                    <span style="font-size: 20px; color: #515151; position: relative; top: 35%; left: 30%;">No notifications</span>
-                </div>
-                <div id="calendar"></div>
-            </div>
-            <span id="sys_tray">  </span>
-        </div>
-        <div id="dock" class="panel-dock">
-            <span class="dock-item" onclick="new_window('Files')" app="Files">
-                <img src="assets/icons/apps/nautilus.svg" alt="" class="dock-item-icon">
-            </span>
-            <span class="dock-item" onclick="new_window('Firefox')" app="Firefox">
-                <img src="assets/icons/apps/firefox.svg" alt="" class="dock-item-icon">
-            </span>
-            <span class="dock-item" onclick="new_window('Alacritty')" app="Alacritty">
-                <img src="assets/icons/apps/alacritty.svg" alt="" class="dock-item-icon">
-            </span>
-            <span class="dock-item" onclick="new_window('PyCharm Community Edition')" app="PyCharm Community Edition">
-                <img src="assets/icons/apps/pycharm community edition.svg" alt="" class="dock-item-icon">
-            </span>
-            <span class="dock-item" onclick="new_window('Visual Studio Code')" app="Visual Studio Code">
-                <img src="assets/icons/apps/visual studio code.svg" alt="" class="dock-item-icon">
-            </span>
-        </div>
-    </div>
-    <script src="main.js"></script>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Svelte</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
