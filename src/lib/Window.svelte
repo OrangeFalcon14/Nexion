@@ -10,6 +10,7 @@ import TextEditorWindow from "./components/TextEditorWindow.svelte";
 
 export let app;
 export let number;
+export let focused;
 
 let maximized = false;
 let minimized = true;
@@ -23,7 +24,7 @@ var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 let dragElement;
 function dragMouseDown(e){
     dragElement = document.getElementById(number);
-    console.log(number ,    dragElement);
+    dispatch("focusWindow", number);
     e = e;
     pos3 = e.clientX;
     pos4 = e.clientY;
@@ -48,10 +49,11 @@ function closeDragElement() {
 }
 </script>
 
-<div id={number} class="window" style="top: {top}; left: {left}; height: {height}; width: {width};">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div id={number} class="window" class:focused={focused} style="top: {top}; left: {left}; height: {height}; width: {width};" on:mousedown={() => dispatch("focusWindow", number)}>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="window-titlebar" id={`${number}titlebar`} on:mousedown={(event) => dragMouseDown(event)}>
-        <button class="titlebar-btn close-btn" on:click={() => dispatch("closeWindow", {number: number-1})}></button>
+        <button class="titlebar-btn close-btn" on:click={() => dispatch("closeWindow", {number: number})}></button>
         <button class="titlebar-btn maximize-btn" on:click={() => {minimized = false; maximized = true;}}></button>
         <button class="titlebar-btn minimize-btn" on:click={() => {maximized = false; minimized = true;}}></button>
 
@@ -77,6 +79,8 @@ function closeDragElement() {
     z-index: 9;
     background-color: var(--color2);
     border-radius: 10px;
+    opacity: 0.7;
+    z-index: 5;
 }
 
 .window .window-titlebar {
@@ -123,5 +127,8 @@ function closeDragElement() {
     user-select: none;
     font-weight: 600;
 }
-
+.focused{
+    opacity: 1;
+    z-index: 6;
+}
 </style>

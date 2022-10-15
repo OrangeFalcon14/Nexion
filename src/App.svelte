@@ -18,12 +18,15 @@ function close_window(number){
     windows = JSON.parse(JSON.stringify(temp));
 }
 
-function focus_window(number) {
-    let window = windows[number];
+function focus_window(event) {
+    let number = event.detail;
+    // let window = windows[number];
     
-    for (let x of windows){
-        console.log(x);
+    for (let window of windows){
+        window.focused = false;
     }
+
+    windows[number].focused = true;
 }
 </script>
 
@@ -31,6 +34,6 @@ function focus_window(number) {
     <Dock {apps_list} on:newWindow={new_window}/>
 <!-- windows cannot be dragged bcoz when the windows are rerendered, all their ids are same bcoz windows.length is the same -->
     {#each windows as window}
-        <Window app={window.app} number={window.number} on:closeWindow={(number) => close_window(number.detail.number)}/> 
+        <Window app={window.app} number={window.number} focused={window.focused} on:focusWindow={focus_window} on:closeWindow={(number) => close_window(number.detail.number)}/> 
     {/each}
 </div>
