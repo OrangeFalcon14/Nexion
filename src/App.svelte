@@ -1,6 +1,8 @@
 <script>
 import Dock from './lib/Dock.svelte';
 import Window from './lib/Window.svelte';
+import TopBar from './lib/TopBar.svelte';
+
 let apps_list = ["Files", "Firefox", "Alacritty", "Pycharm Community Edition", "Visual Studio Code"];
 
 let windows = [];
@@ -31,6 +33,7 @@ function focus_window(event) {
 </script>
 
 <div id="container">
+    <TopBar />
     <Dock {apps_list} on:newWindow={new_window}/>
 <!-- windows cannot be dragged bcoz when the windows are rerendered, all their ids are same bcoz windows.length is the same -->
     {#each windows as window}
