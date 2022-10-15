@@ -6,7 +6,10 @@ let apps_list = ["Files", "Firefox", "Alacritty", "Pycharm Community Edition", "
 let windows = [];
 
 function new_window(app){
-    windows = [...windows, app.detail];
+    let obj = app.detail;
+    obj.number = windows.length;
+    // windows = [...windows, app.detail];
+    windows = [...windows, obj];
 }
 
 function close_window(number){
@@ -14,12 +17,20 @@ function close_window(number){
     temp.pop(number);
     windows = JSON.parse(JSON.stringify(temp));
 }
+
+function focus_window(number) {
+    let window = windows[number];
+    
+    for (let x of windows){
+        console.log(x);
+    }
+}
 </script>
 
 <div id="container">
     <Dock {apps_list} on:newWindow={new_window}/>
-
+<!-- windows cannot be dragged bcoz when the windows are rerendered, all their ids are same bcoz windows.length is the same -->
     {#each windows as window}
-        <Window app={window.app} number={windows.length} on:closeWindow={(number) => close_window(number.detail.number)}/> 
+        <Window app={window.app} number={window.number} on:closeWindow={(number) => close_window(number.detail.number)}/> 
     {/each}
 </div>
