@@ -12,6 +12,7 @@ function new_window(app){
     obj.number = windows.length;
     // windows = [...windows, app.detail];
     windows = [...windows, obj];
+    focus_window({detail: obj.number});
 }
 
 function close_window(number){
