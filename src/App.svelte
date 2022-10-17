@@ -5,39 +5,79 @@ import TopBar from './lib/TopBar.svelte';
 
 let apps_list = ["Files", "Firefox", "Alacritty", "Pycharm Community Edition", "Visual Studio Code"];
 
+let window_ids = [];
+
 let windows = [];
 
 function new_window(app){
     let obj = app.detail;
-    obj.number = windows.length;
-    // windows = [...windows, app.detail];
+    
+    while(true){
+        obj.number = Math.floor(Math.random() * 1000);
+
+        if(window_ids.length == 0){
+            window_ids = [...window_ids, obj.number];
+            break;
+        }
+
+        if(window_ids.indexOf(obj.number) == -1){
+            break;
+        }
+    }
+
+    obj.top = "100px";
+    obj.left = "100px";
+
     windows = [...windows, obj];
     focus_window({detail: obj.number});
 }
 
 function close_window(number){
-    let temp = JSON.parse(JSON.stringify(windows));
-    temp.pop(number);
-    windows = JSON.parse(JSON.stringify(temp));
+    for (var i = 0; i < windows.length; i++) {
+        if (windows[i].number === number) {
+            windows.splice(i, 1);
+            windows = windows;
+        }
+    }
 }
 
 function focus_window(event) {
     let number = event.detail;
-    // let window = windows[number];
     
     for (let window of windows){
         window.focused = false;
     }
+    for(let window of windows){
+        if(window.number == number){
+            window.focused = true;
+        }
+    }
+    windows = windows;
+}
 
-    windows[number].focused = true;
+function getWindow(number) {
+    for (const window of windows) {
+        if(window.number == number){
+            return window;
+        }
+    }
+}
+
+function windowMoved(event){
+    let top = event.detail.top;
+    let left = event.detail.left;
+    
+    let window = getWindow(event.detail.number);
+
+    window.top = top;
+    window.left = left;
 }
 </script>
 
 <div id="container">
     <TopBar />
     <Dock {apps_list} on:newWindow={new_window}/>
-<!-- windows cannot be dragged bcoz when the windows are rerendered, all their ids are same bcoz windows.length is the same -->
     {#each windows as window}
-        <Window app={window.app} number={window.number} focused={window.focused} on:focusWindow={focus_window} on:closeWindow={(number) => close_window(number.detail.number)}/> 
+        <Window app={window.app} number={window.number} focused={window.focused} initalTop={window.top} initalLeft={window.left} on:focusWindow={focus_window} on:closeWindow={(number) => close_window(number.detail.number)} on:windowMoved={windowMoved}/> 
     {/each}
 </div>

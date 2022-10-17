@@ -11,12 +11,14 @@ import TextEditorWindow from "./components/TextEditorWindow.svelte";
 export let app;
 export let number;
 export let focused;
+export let initalTop;
+export let initalLeft;
 
 let maximized = false;
 let minimized = true;
 
-$: top = maximized ? "0" : "100px";
-$: left = maximized ? "0" : "100px";
+$: top = maximized ? "22px" : initalTop;
+$: left = maximized ? "0px" : initalLeft;
 $: height = maximized ? "calc(100% - 62px)" : "750px";
 $: width = maximized ? "100%" : "1000px";
 
@@ -46,6 +48,7 @@ function elementDrag(e) {
 function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
+    dispatch("windowMoved", {number, top: dragElement.style.top, left: dragElement.style.left,});
 }
 </script>
 
