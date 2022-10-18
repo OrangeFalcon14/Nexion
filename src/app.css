@@ -93,17 +93,6 @@ body {
     background-size: cover;
 } */
 
-.window .shell-prompt {
-    padding: 0px;
-    border: none;
-    outline: none;
-    font-size: 18px;
-    background-color: var(--color2);
-    color: white;
-    width: 99.5%;
-    font-family: "Ubuntu Mono";
-}
-
 .files-sidebar-link {
     user-select: none;
     padding: 7.5px;
