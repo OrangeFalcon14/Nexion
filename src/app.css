@@ -93,34 +93,6 @@ body {
     background-size: cover;
 } */
 
-.files-sidebar-link {
-    user-select: none;
-    padding: 7.5px;
-    border-radius: 5px;
-    margin: 5px;
-    font-size: 18px;
-}
-
-.files-sidebar-link:hover {
-    background-color: var(--color2);
-}
-
-.folder-icon {
-    padding: 10px;
-    margin: 10px;
-    float: none;
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    background-image: url("/src/assets/icons/system/folder.svg");
-    background-size: cover;
-    transition: opacity 0.25s;
-}
-
-.folder-icon:hover {
-    opacity: 0.5;
-}
-
 #applications-menu-btn {
     margin-left: 5px;
 }
