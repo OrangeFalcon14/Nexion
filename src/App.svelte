@@ -9,7 +9,11 @@ let window_ids = [];
 
 let windows = [];
 
+let applications_menu_show = false;
+
 function new_window(app){
+    applications_menu_show = false;
+    console.log(applications_menu_show);
     let obj = app.detail;
     
     while(true){
@@ -75,7 +79,7 @@ function windowMoved(event){
 </script>
 
 <div id="container">
-    <TopBar />
+    <TopBar on:newWindow={new_window} applications_menu_show={applications_menu_show} />
     <Dock {apps_list} on:newWindow={new_window}/>
     {#each windows as window}
         <Window app={window.app} number={window.number} focused={window.focused} initalTop={window.top} initalLeft={window.left} on:focusWindow={focus_window} on:closeWindow={(number) => close_window(number.detail.number)} on:windowMoved={windowMoved}/> 

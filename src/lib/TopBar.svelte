@@ -1,47 +1,8 @@
 <script>
-// let date_time = {};
+import { createEventDispatcher } from "svelte";
+import ApplicationsMenu from "./ApplicationsMenu.svelte";
 
-// const months = ["January", "February", "March", "April", "May", "June",
-//     "July", "August", "September", "October", "November", "December"
-// ];
-
-// function update_time() {
-//     const date = new Date();
-//     date_time.hours = date.getHours();
-//     date_time.seconds = (date.getSeconds() < 10) ? `0${date.getSeconds()}` : date.getSeconds();
-//     date_time.minutes = (date.getMinutes() < 10) ? `0${date.getMinutes()}` : date.getMinutes();
-//     date_time.am_pm = (date.getHours() < 12)? "AM" : "PM";
-    
-//     let day = date.getDay();
-//     switch (day) {
-//         case 0:
-//             date_time.day = "Sun";
-//             break;
-//         case 1:
-//             date_time.day = "Mon";
-//             break;
-//         case 2:
-//             date_time.day = "Tue";
-//             break;
-//         case 3:
-//             date_time.day = "Wed";
-//             break;
-//         case 4:
-//             date_time.day = "Thu";
-//             break;
-//         case 5:
-//             date_time.day = "Fri";
-//             break;
-//         case 6:
-//             date_time.day = "Sat";
-//             break;
-//     }
-//     date_time = {...date_time};
-//     let date_time_str = `${date_time.day} ${months[date.getMonth()].slice(0, 3)} ${date.getDate()} ${date_time.hours}:${date_time.minutes}:${date_time.seconds}`;
-// }
-
-// update_time();
-// setInterval(update_time, 1000);
+let dispatch = createEventDispatcher()
 
 let date_time;
 
@@ -84,11 +45,21 @@ function update_time() {
 }
 update_time();
 setInterval(update_time, 1000);
+
+export let applications_menu_show = false;
+
+console.log(applications_menu_show);
+
 </script>
 
 <div id="topbar">
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <span id="applications-menu-launcher" on:click={() => {applications_menu_show = !applications_menu_show}}>Applications</span>
+    {#if applications_menu_show}
+        <ApplicationsMenu on:newWindow={(event) => {applications_menu_show = false; dispatch("newWindow", event.detail)}} />
+    {/if}
     <span id="date-time">{date_time}</span>
-    <div id="sys-tray">  </div>
+    <span id="sys-tray">  </span>
 
 </div>
 
@@ -117,6 +88,9 @@ setInterval(update_time, 1000);
     font-family: NerdFontSymbols;
     position: inherit;
     right: 0;
-    padding-right: 1%;
+    padding-right: 0.5%;
+}
+#applications-menu-launcher{
+    margin-left: 0.5%;
 }
 </style>
