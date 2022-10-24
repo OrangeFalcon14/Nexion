@@ -37,17 +37,20 @@ body {
     color: black;
 }
 .light #container{
-    background-image: url("/src/assets/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg");
+    /* background-image: url("/src/assets/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg"); */
+    background-image: url("./assets/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg");
 }
 
 @font-face {
     font-family: NerdFontSymbols;
-    src: url("/src/assets/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf");
+    /* src: url("/src/assets/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf"); */
+    src:url("./assets/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf");
 }
 
 @font-face {
     font-family: Ubuntu;
-    src: url("/src/assets/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Nerd\ Font\ Complete.ttf");
+    /* src: url("/src/assets/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Nerd\ Font\ Complete.ttf"); */
+    src: url("./assets/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Nerd\ Font\ Complete.ttf");
 }
 
 #app{
@@ -59,7 +62,8 @@ body {
     height: 100%;
     width: 100%;
     /* background-image: url("assets/wallpapers/pawel-czerwinski-tMbQpdguDVQ-unsplash.jpg"); */
-    background-image: url("/src/assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg");
+    /* background-image: url("/src/assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg"); */
+    background-image: url("./assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg");
     background-size: cover;
 }
 
