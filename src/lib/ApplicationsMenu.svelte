@@ -1,15 +1,27 @@
 <script>
+    import { onMount } from "svelte";
 import AppIcon from "./components/AppIcon.svelte";
+import SearchField from "./components/SearchField.svelte";
 
 let apps_list = ["Alacritty", "Files", "Firefox", "Pycharm Community Edition", "Visual Studio Code"];
+
+let shownApps = JSON.parse(JSON.stringify(apps_list));
+
+function showApps(event){
+    shownApps = event.detail;
+}
+
+onMount(() => {
+    document.getElementById("applications-menu-search").focus();
+})
 
 </script>
 
 <div id="applications-menu">
-    <input type="text" id="applications-menu-search" placeholder="Search..." />
+    <SearchField {apps_list} on:closeApplicationMenu on:showApps={showApps} />
     <br><br>
     <div id="apps-container">
-        {#each apps_list as app}
+        {#each shownApps as app}
             <AppIcon {app} on:newWindow />
         {/each}
     </div>
@@ -35,16 +47,5 @@ let apps_list = ["Alacritty", "Files", "Firefox", "Pycharm Community Edition", "
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
-}
-
-#applications-menu-search {
-    color: white;
-    font-size: 15px;
-    border: none;
-    outline: none;
-    background-color: var(--color2);
-    border-radius: 10px;
-    padding: 10px;
-    width: calc(100% - 20px);
 }
 </style>

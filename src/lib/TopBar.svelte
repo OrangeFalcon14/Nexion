@@ -56,7 +56,7 @@ console.log(applications_menu_show);
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <span id="applications-menu-launcher" on:click={() => {applications_menu_show = !applications_menu_show}}>Applications</span>
     {#if applications_menu_show}
-        <ApplicationsMenu on:newWindow={(event) => {applications_menu_show = false; dispatch("newWindow", event.detail)}} />
+        <ApplicationsMenu on:closeApplicationMenu={() => {applications_menu_show = false}} on:newWindow={(event) => {applications_menu_show = false; dispatch("newWindow", event.detail)}} />
     {/if}
     <span id="date-time">{date_time}</span>
     <span id="sys-tray">  </span>
