@@ -1,5 +1,5 @@
 <script>
-import { createEventDispatcher } from "svelte";
+import { createEventDispatcher, setContext } from "svelte";
 
 let dispatch = createEventDispatcher();
 
@@ -13,6 +13,8 @@ export let number;
 export let focused;
 export let initalTop;
 export let initalLeft;
+
+setContext("window_id", number);
 
 let maximized = false;
 let minimized = true;
