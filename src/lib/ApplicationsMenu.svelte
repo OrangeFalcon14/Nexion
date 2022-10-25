@@ -1,9 +1,9 @@
 <script>
-    import { onMount } from "svelte";
+import { getContext, onMount } from "svelte";
 import AppIcon from "./components/AppIcon.svelte";
 import SearchField from "./components/SearchField.svelte";
 
-let apps_list = ["Alacritty", "Files", "Firefox", "Pycharm Community Edition", "Visual Studio Code"];
+let apps_list = getContext("apps_list");
 
 let shownApps = JSON.parse(JSON.stringify(apps_list));
 

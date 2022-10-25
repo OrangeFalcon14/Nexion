@@ -2,8 +2,10 @@
 import Dock from './lib/Dock.svelte';
 import Window from './lib/Window.svelte';
 import TopBar from './lib/TopBar.svelte';
+import { setContext } from 'svelte';
 
 let apps_list = ["Files", "Firefox", "Alacritty", "Pycharm Community Edition", "Visual Studio Code"];
+setContext("apps_list", apps_list);
 
 let window_ids = [];
 
@@ -80,7 +82,7 @@ function windowMoved(event){
 
 <div id="container">
     <TopBar on:newWindow={new_window} applications_menu_show={applications_menu_show} />
-    <Dock {apps_list} on:newWindow={new_window}/>
+    <Dock on:newWindow={new_window}/>
     {#each windows as window}
         <Window app={window.app} number={window.number} focused={window.focused} initalTop={window.top} initalLeft={window.left} on:focusWindow={focus_window} on:closeWindow={(number) => close_window(number.detail.number)} on:windowMoved={windowMoved}/> 
     {/each}

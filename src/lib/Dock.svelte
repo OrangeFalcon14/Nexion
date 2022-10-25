@@ -1,7 +1,8 @@
 <script>
+import { getContext } from 'svelte';
 import DockIcon from './components/DockIcon.svelte';
 
-export let apps_list; 
+let apps_list = getContext("apps_list");
 </script>
 
 <div id="dock" class="panel-dock">
