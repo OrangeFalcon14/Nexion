@@ -1,11 +1,20 @@
 <script>
+import ToolbarButton from "./ToolbarButton.svelte";
 let text_content;
 
 let text_wrap = "off";
+
+const save_file = () => {};
+const new_file = () => {};
+const open_file = () => {};
 </script>
 
 <div class="window-container">
-    <div class="toolbar"></div>
+    <div class="toolbar">
+        <ToolbarButton on:click={new_file} text="" title="New" />
+        <ToolbarButton on:click={save_file} text="" title="Save" />
+        <ToolbarButton on:click={open_file} text="" title="Open" />
+    </div>
     <textarea wrap={text_wrap} bind:value={text_content} />
 </div>
 
