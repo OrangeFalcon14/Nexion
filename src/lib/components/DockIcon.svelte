@@ -8,8 +8,8 @@ export let app;
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <span class="dock-item" on:click={() => {dispatch("newWindow", {app, focused:true})}}>
-    <!-- <img src={`/src/assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon"> -->
-    <img src={`../../assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon">
+    <img src={`/src/assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon">
+    <!-- <img src={`../../assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon"> -->
 </span>
 
 <style>

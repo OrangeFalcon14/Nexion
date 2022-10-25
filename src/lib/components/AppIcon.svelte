@@ -7,8 +7,8 @@ export let app;
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="applications-menu-app" title={app} on:click={() => {dispatch("newWindow", {app, focused:true})}}>
-    <!-- <img src="/src/assets/icons/apps/{app.toLowerCase()}.svg" alt={app} /> -->
-    <img src="../../assets/icons/apps/{app.toLowerCase()}.svg" alt={app} />
+    <img src="/src/assets/icons/apps/{app.toLowerCase()}.svg" alt={app} />
+    <!-- <img src="../../assets/icons/apps/{app.toLowerCase()}.svg" alt={app} /> -->
     <br>{app}
 </div>
 
