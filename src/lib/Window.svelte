@@ -7,6 +7,7 @@ import AlacrittyWindow from "./components/AlacrittyWindow.svelte";
 import FilesWindow from "./components/FilesWindow.svelte";
 import SettingsWindow from "./components/SettingsWindow.svelte";
 import TextEditorWindow from "./components/TextEditorWindow.svelte";
+import CameraWindow from "./components/CameraWindow.svelte";
 
 export let app;
 export let number;
@@ -74,6 +75,9 @@ function closeDragElement() {
 
     {:else if app === "Text Editor"}
         <TextEditorWindow />
+
+    {:else if app === "Camera"}
+        <CameraWindow />
     {/if}
 </div>
 
