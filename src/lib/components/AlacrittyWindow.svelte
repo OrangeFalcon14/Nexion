@@ -13,11 +13,13 @@ let inputs = [
 function handleKeyUp(event, id) {
     if(event.key == "Enter"){
         let output = "";
-        if(event.target.value.trim() === `${prompt}sudo rm -rf /`){
+        let command = event.target.value.trim();
+        if(command === `${prompt}sudo rm -rf /`){
             output = "rm: it is dangerous to operate recursively on '/'<br>rm: use --no-preserve-root to override this failsafe"
-        }
-        if(event.target.value === `${prompt}sudo rm -rf / --no-preserve-root`){
+        } else if(command === `${prompt}sudo rm -rf / --no-preserve-root`){
             document.body.innerHTML = "";
+        } else if(command === `${prompt}ls`){
+            output = `<pre><span style="color:#9B6BDF; font-weight: bold;">Desktop</span>   <span style="color:#9B6BDF; font-weight: bold;">Downloads</span>   <span style="color:#9B6BDF; font-weight: bold;">Music</span>   <span style="color:#9B6BDF; font-weight: bold;">Pictures</span>   <span style="color:#9B6BDF; font-weight: bold;">Templates</span>   <span style="color:#9B6BDF; font-weight: bold;">Documents</span>   <span style="color:#9B6BDF; font-weight: bold;">Public</span>   <span style="color:#9B6BDF; font-weight: bold;">Videos</span></pre>`
         }
 
         let obj = {
@@ -79,5 +81,6 @@ function handleKeyUp(event, id) {
     max-height: min-content;
     background-color: var(--color2);
     font-family: "Ubuntu Mono";
+    font-size: 18px;
 }
 </style>
