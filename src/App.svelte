@@ -4,7 +4,7 @@ import Window from './lib/Window.svelte';
 import TopBar from './lib/TopBar.svelte';
 import { setContext } from 'svelte';
 
-let apps_list = ["Files", "Firefox", "Alacritty", "Camera", "Pycharm Community Edition", "Text Editor", "Visual Studio Code"];
+let apps_list = ["Files", "Firefox", "Asteroids", "Alacritty", "Camera", "Pycharm Community Edition", "Text Editor", "Visual Studio Code"];
 setContext("apps_list", apps_list);
 
 let window_ids = [];

@@ -7,7 +7,11 @@ export let app;
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="applications-menu-app" title={app} on:click={() => {dispatch("newWindow", {app, focused:true})}}>
-    <img src="/src/assets/icons/apps/{app.toLowerCase()}.svg" alt={app} />
+    {#if app != "Asteroids"}
+        <img src="/src/assets/icons/apps/{app.toLowerCase()}.svg" alt={app} />
+    {:else}
+        <img src="/src/assets/icons/apps/asteroids.png" alt={app} style="width: 64px; height:54px; margin-bottom: 10px;" />
+    {/if}
     <!-- <img src="../../assets/icons/apps/{app.toLowerCase()}.svg" alt={app} /> -->
     <br>{app}
 </div>
