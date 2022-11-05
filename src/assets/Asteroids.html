@@ -15,7 +15,7 @@
         }
 
         .heading {
-            font-size: large;
+            font-size: larger;
         }
 
         #container {
@@ -63,7 +63,12 @@
             width: 25px;
             height: 25px;
             padding: 1px 1px 1px 1px;
+            color:black;
         }   
+        #settings_close_btn:hover{
+            color:white;
+            background: #ff2946;
+        }
     </style>
 </head>
 
@@ -71,7 +76,7 @@
     <canvas id="gameCanvas" width="800" height="600" style="float:left; "></canvas>
     <button style="position: absolute; bottom: 2%; z-index: 100; right: 0.5%;" onclick="document.getElementById('container').style.display = 'block';"><i class="bi bi-list"></i></button>
     <div id="container" style="float:left;padding-left: 10px; display: block">
-        <button onclick="document.getElementById('container').style.display = 'none';"
+        <button style="font-size: 20px;" onclick="document.getElementById('container').style.display = 'none';"
                 id="settings_close_btn">&times;</button>
         <div>
             <p class="heading">Instructions</p>
@@ -96,8 +101,6 @@
             <p>Music: <input type="checkbox" onchange="MUSIC_ON = this.checked; this.blur()" id="music_on" checked />
             </p>
         </div>
-        <p>Wanna see a computer play this game? It uses Artificial <br>Neural Networks to achieve this.<a
-                href="Asteroids_with_Neural_Network.html">Click Here</a> to view it</p>
 
     </div>
     <script>
@@ -621,30 +624,32 @@
             }
 
             // check for asteroids collisions
-            if (!exploding) {
-                if (ship.blinkNum == 0 && !ship.dead) {
-                    for (var i = 0; i < roids.length; i++) {
-                        if (distBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y) < ship.r + roids[i].r) {
-                            explodeShip();
-                            destroyAsteroid(i);
-                            break;
+            if(document.getElementById('container').style.display == "none"){
+                if (!exploding) {
+                    if (ship.blinkNum == 0 && !ship.dead) {
+                        for (var i = 0; i < roids.length; i++) {
+                            if (distBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y) < ship.r + roids[i].r) {
+                                explodeShip();
+                                destroyAsteroid(i);
+                                break;
+                            }
                         }
                     }
-                }
-                //rotate ship
-                ship.a += ship.rot;
+                    //rotate ship
+                    ship.a += ship.rot;
 
-                //move the ship
-                ship.x += ship.thrust.x;
-                ship.y += ship.thrust.y;
-            } else {
-                ship.explodeTime--;
-                if (ship.explodeTime == 0) {
-                    lives--;
-                    if (lives == 0) {
-                        gameOver();
-                    } else {
-                        ship = newShip();
+                    //move the ship
+                    ship.x += ship.thrust.x;
+                    ship.y += ship.thrust.y;
+                } else {
+                    ship.explodeTime--;
+                    if (ship.explodeTime == 0) {
+                        lives--;
+                        if (lives == 0) {
+                            gameOver();
+                        } else {
+                            ship = newShip();
+                        }
                     }
                 }
             }
