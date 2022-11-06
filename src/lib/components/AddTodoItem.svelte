@@ -1,5 +1,5 @@
 <script>
-import { createEventDispatcher } from "svelte";
+import { createEventDispatcher, onMount } from "svelte";
 
 const dispatch = createEventDispatcher();
 
@@ -18,9 +18,20 @@ const addTodoItem = () => {
         error = "Title cannot be empty!"
     }
 }
+
+const handleKeyup = (event) => {
+    if(event.key == "Escape"){
+        dispatch("closeModal")
+    }
+}
+
+onMount(() => {
+    // @ts-ignore
+    document.querySelector(".add-todo-container input").focus()
+})
 </script>
 
-<div class="backdrop">
+<div class="backdrop" on:keyup={handleKeyup}>
     <div class="add-todo-container">
         <p>Add Todo</p>
         <input type="text" bind:value={title} />
@@ -102,6 +113,12 @@ const addTodoItem = () => {
     font-size: 18px;
     transition: 0.2s all ease-in;    
     display: inline;
+}
+.add-todo-container button:hover{
+    opacity: 0.8;
+}
+.add-todo-container button:active, .add-todo-container button:focus{
+    border: 2px solid var(--accent-color);
 }
 
 .add-todo-container .error{

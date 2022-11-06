@@ -29,7 +29,7 @@ const addTodoItem = (event) => {
     {/each}
     <button on:click={() => {showAddTodoItem = !showAddTodoItem}} class="add-todo-btn">+</button>
     {#if showAddTodoItem}
-        <AddTodoItem on:addTodoItem={addTodoItem}/>
+        <AddTodoItem on:addTodoItem={addTodoItem} on:closeModal={() => showAddTodoItem = false}/>
     {/if}
 </div>
 
