@@ -1,4 +1,5 @@
 <script>
+    import { element } from "svelte/internal";
 import AddTodoItem from "./AddTodoItem.svelte";
 import TodoItem from "./TodoItem.svelte";
 
@@ -9,13 +10,36 @@ let showAddTodoItem = false;
 const addTodoItem = (event) => {
     showAddTodoItem = false;
     let {title, content} = event.detail;
-    content = content.replaceAll("\n", "<br>")
+    content = content.replaceAll("\n", "<br>");
+    let id = Math.floor(Math.random() * 1000);
     todos.push({
+        id,        
         title,
-        content
+        content,
+        done: false,
     });
     todos = todos;
     localStorage.setItem("todos", todos.toString());
+}
+
+const handleTaskDone = (event) => {
+    let id = event.detail;
+    for (let todo of todos) {
+        if(todo.id == id){
+            todo.done = true;
+        }
+    }
+    todos = todos;
+}
+
+const handleTaskDelete = (event) => {
+    let id = event.detail;
+    todos.forEach((element, index) => {
+        if(element.id == id){
+            todos.splice(index, 1);
+        }
+    })
+    todos = todos;
 }
 </script>
 
@@ -23,9 +47,9 @@ const addTodoItem = (event) => {
     <h2>Your Todos</h2>
     <br>
     {#each todos as todo}
-        <TodoItem title={todo.title} content={todo.content} />
+        <TodoItem title={todo.title} content={todo.content} done={todo.done} id={todo.id} on:taskDone={handleTaskDone} on:taskDelete={handleTaskDelete}/>
     {:else}
-        <h5 style="text-align: center;">Click the + button below to add your first note!</h5>
+        <h5 style="text-align: center;">Click the + button below to add your first todo!</h5>
     {/each}
     <button on:click={() => {showAddTodoItem = !showAddTodoItem}} class="add-todo-btn">+</button>
     {#if showAddTodoItem}
