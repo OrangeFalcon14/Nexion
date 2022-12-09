@@ -70,7 +70,7 @@ function handleKeyUp(event, id) {
     border: none;
     outline: none;
     font-size: 20px;
-    background-color: var(--color2);
+    background-color: transparent;
     color: white;
     width: 99.5%;
     font-family: "Ubuntu Mono";

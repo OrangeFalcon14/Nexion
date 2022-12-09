@@ -11,9 +11,9 @@ body {
 }
 
 :root {
-    --color1: #080812;
-    --color2: #161620;
-    --color3: #111118;
+    --color1: #060610bf;
+    --color2: #161620dc;
+    --color3: #111118dc;
     --accent-color: #736099;
     --dock-height: 62px;
     --menu-width: 300px;

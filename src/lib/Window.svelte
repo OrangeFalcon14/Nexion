@@ -98,6 +98,7 @@ function closeDragElement() {
     border-radius: 10px;
     opacity: 0.7;
     z-index: 5;
+    backdrop-filter: blur(20px);
 }
 
 .window .window-titlebar {

@@ -16,6 +16,7 @@ let apps_list = ["Files", "Firefox", "Alacritty", "Pycharm Community Edition", "
     z-index: 10;
     position: fixed;
     background-color: var(--color1);
+    backdrop-filter: blur(20px);
 }
 
 .panel-dock{
