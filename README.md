@@ -1,5 +1,5 @@
 # Nexion
-An online desktop environment inspired by GNOME
+An online desktop inspired by GNOME
 
 **WARNING:** This is still WIP!
 
