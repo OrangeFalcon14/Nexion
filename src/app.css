@@ -1,0 +1,174 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Ubuntu;
+    background-color: var(--color1);
+    box-sizing: border-box;
+    color: white;
+}
+
+:root {
+    --color1: #060610bf;
+    --color2: #161620dc;
+    --color3: #111118dc;
+    --accent-color: #736099;
+    --dock-height: 62px;
+    --menu-width: 300px;
+    --app-menu-height: 500px;
+    --app-menu-width: 500px;
+    --notifications-calendar-dropdown-height: 300px;
+    --notifications-calendar-dropdown-width: 600px;
+}
+.light {
+    --color1: #fff;
+    --color2: #eee;
+    --color3: #ddd;
+    color: black;
+}
+.light .window .shell-prompt{
+    color: black;
+}
+.light select{
+    color: black;
+}
+.light #applications-menu-search{
+    color: black;
+}
+.light #container{
+    background-image: url("/src/assets/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg");
+    /* background-image: url("./assets/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg"); */
+}
+
+@font-face {
+    font-family: NerdFontSymbols;
+    src: url("/src/assets/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf");
+    /* src:url("./assets/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf"); */
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url("/src/assets/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Nerd\ Font\ Complete.ttf");
+    /* src: url("./assets/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Nerd\ Font\ Complete.ttf"); */
+}
+
+#app{
+    height: 100%;
+    width: 100%;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    /* background-image: url("assets/wallpapers/pawel-czerwinski-tMbQpdguDVQ-unsplash.jpg"); */
+    background-image: url("/src/assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg");
+    /* background-image: url("./assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg"); */
+    background-size: cover;
+}
+
+.menu {
+    user-select: none;
+    display: none;
+    position: fixed;
+    max-width: var(--menu-width);
+    min-width: var(--menu-width);
+    width: var(--menu-width);
+    background-color: var(--color1);
+    padding: 2px;
+    border-radius: 2px;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.menu .menu-item {
+    user-select: none;
+    padding: 3px;
+}
+
+.menu .menu-item:hover {
+    cursor: default;
+    background-color: var(--color2);
+}
+
+/* .window #titlebar .maximize-btn:hover{
+    background-image: url("assets/icons/system/window-maximize.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+#notifications-calendar-dropdown {
+    position: fixed;
+    width: var(--notifications-calendar-dropdown-width);
+    height: var(--notifications-calendar-dropdown-height);
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+    background-color: var(--color1);
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#notifications-calendar-dropdown #notifications {
+    width: calc(50% - 5px);
+    height: 100%;
+    float: left;
+}
+
+#notifications-calendar-dropdown #calendar {
+    width: calc(50% - 5px);
+    height: 100%;
+    float: right;
+}
+
+
+select{
+    margin-left: 1%;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    border: none;/* 1px solid var(--color3); */
+    background-color: var(--color2);
+    outline: none;
+}
+select:hover{
+    background-color: var(--color1);
+}
+
+/* #calendar{
+    overflow: auto;
+}
+#calendar .day{
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    color: #717171;
+}
+#calendar .day:hover {
+    background-color: #717171;
+    color: black;
+} */
+/* 
+#calendar{
+    height: 100%;
+    display: grid;
+    gap: 5px;
+}
+#calendar .day{
+    font-size: 15px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 5px;
+    border-radius: 10px;
+    color: #717171;
+}
+#calendar .day:hover {
+    background-color: #717171;
+    color: black;
+}
+ */
