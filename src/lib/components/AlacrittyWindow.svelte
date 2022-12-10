@@ -79,7 +79,7 @@ function handleKeyUp(event, id) {
 .shell-output{
     width: 100%;
     max-height: min-content;
-    background-color: var(--color2);
+    background-color: transparent;
     font-family: "Ubuntu Mono";
     font-size: 18px;
 }

@@ -30,6 +30,6 @@ export let app;
 }
 
 .applications-menu-app:hover {
-    background-color: var(--color2);
+    background-color: var(--color1);
 }
 </style>
