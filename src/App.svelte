@@ -2,7 +2,7 @@
 import Dock from './lib/Dock.svelte';
 import Window from './lib/Window.svelte';
 import TopBar from './lib/TopBar.svelte';
-import { setContext } from 'svelte';
+import { onMount, setContext } from 'svelte';
 
 let apps_list = ["Files", "Firefox", "Asteroids", "Alacritty", "Camera", "Pycharm Community Edition", "Text Editor", "Todo", "Visual Studio Code"];
 setContext("apps_list", apps_list);
@@ -78,6 +78,10 @@ function windowMoved(event){
     window.top = top;
     window.left = left;
 }
+
+onMount(() => {
+    new_window({detail: {app: "Welcome", focused: true}})
+})
 </script>
 
 <div id="container">

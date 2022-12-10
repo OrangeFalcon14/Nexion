@@ -10,6 +10,7 @@ import TextEditorWindow from "./components/TextEditorWindow.svelte";
 import CameraWindow from "./components/CameraWindow.svelte";
 import AsteroidsWindow from "./components/AsteroidsWindow.svelte";
 import TodoWindow from "./components/TodoWindow.svelte";
+import WelcomeWindow from "./components/WelcomeWindow.svelte";
 
 export let app;
 export let number;
@@ -86,6 +87,9 @@ function closeDragElement() {
 
     {:else if app === "Todo"}
         <TodoWindow />
+
+    {:else if app === "Welcome"}
+        <WelcomeWindow />
     {/if}
 </div>
 
