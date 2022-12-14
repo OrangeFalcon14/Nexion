@@ -41,6 +41,7 @@ onMount(() => {
     overflow: auto;
     background-color: var(--color1);
     backdrop-filter: blur(20px);
+    z-index: 10;
 }
 
 #apps-container {
