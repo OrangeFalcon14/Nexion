@@ -1,12 +1,12 @@
 <script>
 import DockIcon from './components/DockIcon.svelte';
 
-let apps_list = ["Files", "Firefox", "Alacritty", "Pycharm Community Edition", "Visual Studio Code"];
+export let apps_list;
 </script>
 
 <div id="dock" class="panel-dock">
     {#each apps_list as app}
-        <DockIcon app={app} on:newWindow/>
+        <DockIcon app={app.name} running={app.running} on:newWindow/>
     {/each}
 </div>
 

@@ -62,7 +62,7 @@ function closeDragElement() {
 <div id={number} class="window" class:focused={focused} style="top: {top}; left: {left}; height: {height}; width: {width};" on:mousedown={() => dispatch("focusWindow", number)}>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="window-titlebar" id={`${number}titlebar`} on:mousedown={(event) => dragMouseDown(event)}>
-        <button class="titlebar-btn close-btn" on:click={() => dispatch("closeWindow", {number: number})}></button>
+        <button class="titlebar-btn close-btn" on:click={() => dispatch("closeWindow", {app,  number})}></button>
         <button class="titlebar-btn maximize-btn" on:click={() => {minimized = false; maximized = true;}}></button>
         <button class="titlebar-btn minimize-btn" on:click={() => {maximized = false; minimized = true;}}></button>
 

@@ -7,6 +7,29 @@ import { onMount, setContext } from 'svelte';
 let apps_list = ["Files", "Firefox", "Asteroids", "Alacritty", "Camera", "Pycharm Community Edition", "Text Editor", "Todo", "Visual Studio Code"];
 setContext("apps_list", apps_list);
 
+let dock_apps = [
+    {
+        name: "Files",
+        running: false,
+    },
+    {
+        name: "Firefox",
+        running: false,
+    },
+    {
+        name: "Alacritty",
+        running: false,
+    },
+    {
+        name: "Pycharm Community Edition",
+        running: false,
+    },
+    {
+        name: "Visual Studio Code",
+        running: false,
+    },
+];
+
 let window_ids = [];
 
 let windows = [];
@@ -15,7 +38,7 @@ let applications_menu_show = false;
 
 function new_window(app){
     applications_menu_show = false;
-    console.log(applications_menu_show);
+    
     let obj = app.detail;
     
     while(true){
@@ -36,15 +59,36 @@ function new_window(app){
 
     windows = [...windows, obj];
     focus_window({detail: obj.number});
+
+    let appInDock = false;
+    dock_apps.forEach(element => {
+        if(element.name === obj.app){
+            element.running = true;
+            appInDock = true;
+        }
+    });
+    if(!appInDock && obj.app !== "Welcome"){
+        dock_apps.push({
+            name: obj.app,
+            running: true
+        })
+    }
+    dock_apps = dock_apps;
 }
 
-function close_window(number){
+function close_window(event){
     for (var i = 0; i < windows.length; i++) {
-        if (windows[i].number === number) {
+        if (windows[i].number === event.detail.number) {
             windows.splice(i, 1);
             windows = windows;
         }
     }
+    dock_apps.forEach(element => {
+        if(element.name === event.detail.app){
+            element.running = false;
+        }
+    });
+    dock_apps = dock_apps;
 }
 
 function focus_window(event) {
@@ -86,8 +130,8 @@ onMount(() => {
 
 <div id="container">
     <TopBar on:newWindow={new_window} applications_menu_show={applications_menu_show} />
-    <Dock on:newWindow={new_window}/>
+    <Dock apps_list={dock_apps} on:newWindow={new_window}/>
     {#each windows as window}
-        <Window app={window.app} number={window.number} focused={window.focused} initalTop={window.top} initalLeft={window.left} on:focusWindow={focus_window} on:closeWindow={(number) => close_window(number.detail.number)} on:windowMoved={windowMoved}/> 
+        <Window app={window.app} number={window.number} focused={window.focused} initalTop={window.top} initalLeft={window.left} on:focusWindow={focus_window} on:closeWindow={close_window} on:windowMoved={windowMoved}/> 
     {/each}
 </div>
