@@ -45,9 +45,7 @@ onMount(() => {
 }
 
 #apps-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 }
 </style>
