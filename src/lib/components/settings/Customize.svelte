@@ -51,6 +51,46 @@ function resetToDefaults() {
     setCSSVar("--blur", defaultCSSVars["--blur"] + "px");
 }
 
+function exportSettings() {
+    let settings = JSON.stringify({
+        "--color1" : color1,
+        "--color2" : color2,
+        "--color3" : color3,
+        "--accent-color" : accentColor,
+        "--blur" : blur,
+    });
+    let a = document.createElement('a');
+    let blob = new Blob([settings], { 'type': "text/json" });
+    a.href = window.URL.createObjectURL(blob);
+    a.download = "nexionConfig.json";
+    a.click();
+}
+
+function importSettings(){
+    let reader = new FileReader();
+    if (typeof (files[0]) == 'undefined') {
+        // @ts-ignore
+        document.querySelector("label [for='config_import']").click();
+        return;
+    }
+    reader.onload = () => {
+        try{
+            // @ts-ignore
+            let importedConfig = JSON.parse(reader.result);
+            setCSSVar("--color1", importedConfig["--color1"]);
+            setCSSVar("--color2", importedConfig["--color2"]);
+            setCSSVar("--color3", importedConfig["--color3"]);
+            setCSSVar("--accent-color", importedConfig["--accent-color"]);
+            setCSSVar("--blur", importedConfig["--blur"] + "px");
+            showErrorModal = false;
+        }catch (e){
+            showErrorModal = true;
+        }
+    }
+    reader.readAsText(files[0])
+}
+let files;
+let showErrorModal = false;
 </script>
 <div class="customize-container">
     <label for="dock-style-selector">Dock Style</label>
@@ -77,8 +117,19 @@ function resetToDefaults() {
     <br>
     <label for="--blur">Blur<br>
         <span class="desc">Window backgrounds, system components</span></label>
-    <input bind:value={blur} type="range" min="0" max="100" name="--blur" id="--blur" />
-    <button on:click={resetToDefaults}>Reset</button>
+        <input bind:value={blur} type="range" min="0" max="100" name="--blur" id="--blur" />
+    <br>
+    <div class="import-export-btns-container">
+        <button on:click={exportSettings} class="import-export-btns"> Export settings</button>
+        <label for="config_import" class="import-export-btns"> Import settings</label>
+        <input bind:files={files} on:change={importSettings} type="file" id="config_import" style="display: none" />
+    </div>
+    <button on:click={resetToDefaults}>勒 Reset</button>    
+    {#if showErrorModal}
+        <div class="error-container">
+            <p>The file is not a valid Nexion config file!</p>
+        </div>
+    {/if}
 </div>
 
 <style>
@@ -97,14 +148,15 @@ label .desc{
 }
 button{
     grid-column: 2;
+    grid-row: 13;
 }
-button{
+button, label[for="config_import"]{
     background: var(--color1);
     border: 2px solid transparent;
     outline: none;
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 10px;
+    text-align: center;
     color: white;
     font-size: 15px;
     transition: 0.2s all ease-in;    
@@ -115,5 +167,18 @@ button:hover{
 }
 button:active, button:focus{
     border: 2px solid var(--accent-color);
+}
+.import-export-btns-container{
+    grid-column: 1;
+    grid-row: 13;
+}
+.error-container{
+    color: #ff2946;
+    font-size: 15px;
+    grid-column: 1;
+    grid-row: 14;
+}
+.error-container p{
+    margin: 0.25rem;
 }
 </style>
