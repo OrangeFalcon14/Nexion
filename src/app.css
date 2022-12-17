@@ -16,6 +16,7 @@ body {
     --color3: #111118cf;
     --accent-color: #736099;
     --accent-color2: #fa001b;
+    --blur: 20px;
     --dock-height: 70px;
     --menu-width: 300px;
     --app-menu-height: 500px;

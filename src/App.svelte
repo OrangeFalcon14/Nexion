@@ -147,6 +147,31 @@ function windowMoved(event){
     window.left = left;
 }
 
+const root = document.querySelector(":root");
+
+function setCSSVar(variable, val) {
+    root.style.setProperty(variable, val);
+}
+
+function getCSSVar(variable) {
+    let computedStyle = getComputedStyle(root);
+    computedStyle.getPropertyValue(variable);
+}
+
+setContext("setCSSVar", setCSSVar)
+setContext("getCSSVar", getCSSVar);
+
+let colorConfig = JSON.parse(localStorage.getItem("colorConfig")) || undefined;
+if(colorConfig){
+    setCSSVar("--color1", colorConfig["--color1"]);
+    setCSSVar("--color2", colorConfig["--color2"]);
+    setCSSVar("--color3", colorConfig["--color3"]);
+    setCSSVar("--accent-color", colorConfig["--accent-color"]);
+    setCSSVar("--blur", colorConfig["--blur"] + "px");
+}
+
+setContext("colorConfig", colorConfig);
+
 onMount(() => {
     new_window({detail: {app: "Welcome", focused: true}})
 })

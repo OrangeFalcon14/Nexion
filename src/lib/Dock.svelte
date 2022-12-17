@@ -18,7 +18,7 @@ export let apps_list;
     z-index: 10;
     position: fixed;
     background-color: var(--color1);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(var(--blur));
     transition: 0.2s;
 }
 

@@ -40,7 +40,7 @@ onMount(() => {
     max-height: var(--app-menu-height);
     overflow: auto;
     background-color: var(--color1);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(var(--blur));
     z-index: 10;
 }
 

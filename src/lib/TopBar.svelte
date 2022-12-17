@@ -74,7 +74,7 @@ console.log(applications_menu_show);
     top: 0;
     background-color: var(--color1);
     overflow: hidden;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(var(--blur));
 }
 
 #date-time {

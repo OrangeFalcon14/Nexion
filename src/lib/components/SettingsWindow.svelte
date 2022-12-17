@@ -5,7 +5,7 @@ let content = "Customize";
 </script>
 <div class="window-container">
     <div class="sidebar">
-        <div class="sidebar-link" on:click={() => content = "Customize"}>
+        <div class="sidebar-link" on:click={() => content = "Customize"} class:active={content === "Customize"}>
              Customize
         </div>
     </div>
@@ -39,6 +39,10 @@ let content = "Customize";
     border-radius: 5px;
     margin: 5px;
     font-size: 18px;
+}
+
+.sidebar-link.active{
+    background: var(--accent-color);
 }
 .sidebar-link:hover{
     backdrop-filter: brightness(175%);
