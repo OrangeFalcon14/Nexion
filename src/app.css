@@ -139,6 +139,27 @@ select:hover{
     background-color: var(--color1);
 }
 
+.panel-dock{
+    height: var(--dock-height);
+    bottom: 0;
+    width: 100%;
+}
+
+.compact-dock{
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: auto;
+    width: fit-content;
+    max-width: fit-content;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+.compact-dock .hide{
+    bottom: -50px !important;
+}
+
 /* #calendar{
     overflow: auto;
 }

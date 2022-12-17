@@ -60,4 +60,7 @@ export let focused;
 .hide{
     bottom: -5px;
 }
+.compact-dock .hide{
+    bottom: -50px;
+}
 </style>

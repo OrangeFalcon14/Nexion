@@ -1,10 +1,12 @@
 <script>
 import DockIcon from './components/DockIcon.svelte';
 
+let dockStyle = localStorage.getItem("dockStyle") || "panel-dock";
+
 export let apps_list;
 </script>
 
-<div id="dock" class="panel-dock">
+<div id="dock" class={dockStyle}>
     {#each apps_list as app}
         <DockIcon app={app.name} running={app.running} focused={app.focused} on:newWindow/>
     {/each}
@@ -17,6 +19,7 @@ export let apps_list;
     position: fixed;
     background-color: var(--color1);
     backdrop-filter: blur(20px);
+    transition: 0.2s;
 }
 
 .panel-dock{
@@ -26,7 +29,7 @@ export let apps_list;
 }
 
 .compact-dock{
-    height: auto;
+    height: var(--dock-height);
     width: fit-content;
     max-width: fit-content;
     bottom: 1%;
