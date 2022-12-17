@@ -32,7 +32,7 @@ var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 let dragElement;
 function dragMouseDown(e){
     dragElement = document.getElementById(number);
-    dispatch("focusWindow", number);
+    dispatch("focusWindow", {number, app});
     e = e;
     pos3 = e.clientX;
     pos4 = e.clientY;
@@ -59,7 +59,7 @@ function closeDragElement() {
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div id={number} class="window" class:focused={focused} style="top: {top}; left: {left}; height: {height}; width: {width};" on:mousedown={() => dispatch("focusWindow", number)}>
+<div id={number} class="window" class:focused={focused} style="top: {top}; left: {left}; height: {height}; width: {width};" on:mousedown={() => dispatch("focusWindow", {number, app})}>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="window-titlebar" id={`${number}titlebar`} on:mousedown={(event) => dragMouseDown(event)}>
         <button class="titlebar-btn close-btn" on:click={() => dispatch("closeWindow", {app,  number})}></button>

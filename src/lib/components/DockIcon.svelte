@@ -5,10 +5,11 @@ let dispatch = createEventDispatcher();
 
 export let running;
 export let app;
+export let focused;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<span class="dock-item" on:click={() => {dispatch("newWindow", {app, focused:true})}}>
+<span class="dock-item" on:click={() => {dispatch("newWindow", {app, focused:true})}} class:focused={focused}>
     <!-- <img src={`/Nexion/src/assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon"> -->
     {#if app != "Asteroids"}
     <img src={`/Nexion/src/assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon">
@@ -28,6 +29,10 @@ export let app;
     padding-bottom: 20px;
 }
 
+.focused .dock-item-icon{
+    backdrop-filter: brightness(175%);
+}
+
 .dock-item :hover {
     background-color: var(--color1);
 }
@@ -37,6 +42,7 @@ export let app;
     padding: 10px;
     height: calc(var(--dock-height) - 20px);
     width: calc(var(--dock-height) - 20px);
+    transition: 0.2s;
 }
 
 .running-indicator{

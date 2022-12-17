@@ -6,7 +6,7 @@ export let apps_list;
 
 <div id="dock" class="panel-dock">
     {#each apps_list as app}
-        <DockIcon app={app.name} running={app.running} on:newWindow/>
+        <DockIcon app={app.name} running={app.running} focused={app.focused} on:newWindow/>
     {/each}
 </div>
 

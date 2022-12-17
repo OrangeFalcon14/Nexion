@@ -11,22 +11,27 @@ let dock_apps = [
     {
         name: "Files",
         running: false,
+        focused: false,
     },
     {
         name: "Firefox",
         running: false,
+        focused: false,
     },
     {
         name: "Alacritty",
         running: false,
+        focused: false,
     },
     {
         name: "Pycharm Community Edition",
         running: false,
+        focused: false,
     },
     {
         name: "Visual Studio Code",
         running: false,
+        focused: false,
     },
 ];
 
@@ -58,7 +63,7 @@ function new_window(app){
     obj.left = "100px";
 
     windows = [...windows, obj];
-    focus_window({detail: obj.number});
+    focus_window({detail: {number: obj.number, app:obj.app}});
 
     let appInDock = false;
     dock_apps.forEach(element => {
@@ -70,7 +75,8 @@ function new_window(app){
     if(!appInDock && obj.app !== "Welcome"){
         dock_apps.push({
             name: obj.app,
-            running: true
+            running: true,
+            focused: true,
         })
     }
     dock_apps = dock_apps;
@@ -85,14 +91,23 @@ function close_window(event){
     }
     dock_apps.forEach(element => {
         if(element.name === event.detail.app){
-            element.running = false;
+            let isAppWindowOpen = false;
+            for(let window of windows){
+                if(window.app === event.detail.app){
+                    isAppWindowOpen = true;
+                }
+            }
+            if(!isAppWindowOpen){
+                element.running = false;
+                element.focused = false;
+            }
         }
     });
     dock_apps = dock_apps;
 }
 
 function focus_window(event) {
-    let number = event.detail;
+    let number = event.detail.number;
     
     for (let window of windows){
         window.focused = false;
@@ -103,6 +118,15 @@ function focus_window(event) {
         }
     }
     windows = windows;
+
+    for(let app of dock_apps){
+        if(app.name == event.detail.app){
+            app.focused = true;
+        }else{
+            app.focused = false;
+        }
+    }
+    dock_apps = dock_apps;
 }
 
 function getWindow(number) {
