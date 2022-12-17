@@ -11,6 +11,7 @@ $: {
 }
 
 let colorConfig = getContext("colorConfig") || {};
+let defaultCSSVars = getContext("defaultCSSVars");
 
 let color1 = colorConfig["--color1"] || "#060610ae";
 let color2 = colorConfig["--color2"] || "#161620cf";
@@ -35,6 +36,19 @@ $: {
         "--accent-color" : accentColor,
         "--blur" : blur,
     }))
+}
+
+function resetToDefaults() {
+    color1 = defaultCSSVars["--color1"];
+    color2 = defaultCSSVars["--color2"];
+    color3 = defaultCSSVars["--color3"];
+    accentColor = defaultCSSVars["--accent-color"];
+    blur = defaultCSSVars["--blur"];
+    setCSSVar("--color1", defaultCSSVars["--color1"]);
+    setCSSVar("--color2", defaultCSSVars["--color2"]);
+    setCSSVar("--color3", defaultCSSVars["--color3"]);
+    setCSSVar("--accent-color", defaultCSSVars["--accent-color"]);
+    setCSSVar("--blur", defaultCSSVars["--blur"] + "px");
 }
 
 </script>
@@ -64,6 +78,7 @@ $: {
     <label for="--blur">Blur<br>
         <span class="desc">Window backgrounds, system components</span></label>
     <input bind:value={blur} type="range" min="0" max="100" name="--blur" id="--blur" />
+    <button on:click={resetToDefaults}>Reset</button>
 </div>
 
 <style>
@@ -79,5 +94,26 @@ label{
 label .desc{
     color: #bbb;
     font-size: 15px;
+}
+button{
+    grid-column: 2;
+}
+button{
+    background: var(--color1);
+    border: 2px solid transparent;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 15px;
+    transition: 0.2s all ease-in;    
+    display: inline;
+}
+button:hover{
+    opacity: 0.8;
+}
+button:active, button:focus{
+    border: 2px solid var(--accent-color);
 }
 </style>

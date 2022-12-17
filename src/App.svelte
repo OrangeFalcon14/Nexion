@@ -172,6 +172,16 @@ if(colorConfig){
 
 setContext("colorConfig", colorConfig);
 
+const defaultCSSVars = {
+    "--color1": "#060610ae",
+    "--color2": "#161620cf",
+    "--color3": "#111118cf",
+    "--accent-color": "#736099",
+    "--blur": 20,
+}
+
+setContext("defaultCSSVars", defaultCSSVars);
+
 onMount(() => {
     new_window({detail: {app: "Welcome", focused: true}})
 })
