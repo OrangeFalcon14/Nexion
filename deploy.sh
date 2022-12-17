@@ -6,8 +6,10 @@ cp -R src/assets/wallpapers dist/src/assets/wallpapers
 cp -R src/assets/sounds dist/src/assets/sounds
 cp -R src/assets/Asteroids.html dist/src/assets/Asteroids.html
 
-git add dist -f 
-
-git commit -m "Adding dist"
-
-git subtree push --prefix dist origin gh-pages
+cd dist
+git init
+git checkout -B master
+git add -A
+git commit -m "Deploy"
+git push -f https://github.com/OrangeFalcon14/Nexion.git master:gh-pages
+cd ..
