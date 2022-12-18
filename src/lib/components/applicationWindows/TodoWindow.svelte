@@ -1,7 +1,6 @@
 <script>
-    import { element } from "svelte/internal";
-import AddTodoItem from "./AddTodoItem.svelte";
-import TodoItem from "./TodoItem.svelte";
+import AddTodoItem from "../todo/AddTodoItem.svelte";
+import TodoItem from "../todo/TodoItem.svelte";
 
 let todos = /* JSON.parse(localStorage.getItem("todos")) || */ [];
 

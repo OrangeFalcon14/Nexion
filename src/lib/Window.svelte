@@ -3,14 +3,14 @@ import { createEventDispatcher, setContext } from "svelte";
 
 let dispatch = createEventDispatcher();
 
-import AlacrittyWindow from "./components/AlacrittyWindow.svelte";
-import FilesWindow from "./components/FilesWindow.svelte";
-import SettingsWindow from "./components/SettingsWindow.svelte";
-import TextEditorWindow from "./components/TextEditorWindow.svelte";
-import CameraWindow from "./components/CameraWindow.svelte";
-import AsteroidsWindow from "./components/AsteroidsWindow.svelte";
-import TodoWindow from "./components/TodoWindow.svelte";
-import WelcomeWindow from "./components/WelcomeWindow.svelte";
+import AlacrittyWindow from "./components/applicationWindows/AlacrittyWindow.svelte";
+import FilesWindow from "./components/applicationWindows/FilesWindow.svelte";
+import SettingsWindow from "./components/applicationWindows/SettingsWindow.svelte";
+import TextEditorWindow from "./components/applicationWindows/TextEditorWindow.svelte";
+import CameraWindow from "./components/applicationWindows/CameraWindow.svelte";
+import AsteroidsWindow from "./components/applicationWindows/AsteroidsWindow.svelte";
+import TodoWindow from "./components/applicationWindows/TodoWindow.svelte";
+import WelcomeWindow from "./components/applicationWindows/WelcomeWindow.svelte";
 
 export let app;
 export let number;

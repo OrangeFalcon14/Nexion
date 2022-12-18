@@ -1,6 +1,6 @@
 <script>
-import Customize from "./settings/Customize.svelte";
-import Background from "./settings/Background.svelte";
+import Customize from "../settings/Customize.svelte";
+import Background from "../settings/Background.svelte";
 
 let content = "Customize";
 </script>

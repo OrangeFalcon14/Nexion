@@ -1,6 +1,6 @@
 <script>
-import ToolbarButton from "./ToolbarButton.svelte";
-import Modal from "./Modal.svelte";
+import ToolbarButton from "../texteditor/ToolbarButton.svelte";
+import Modal from "../texteditor/Modal.svelte";
 
 let reader = new FileReader();
 
