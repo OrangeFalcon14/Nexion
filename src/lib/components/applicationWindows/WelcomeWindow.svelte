@@ -8,6 +8,8 @@
         <ul style="list-style-type:square">
             <li>Enter fullscreen mode</li>
             <li>Zoom out intil this welcome window is completely visible.</li>
+            <br>
+            <li><b>This is still WIP.</b> I'm constantly adding new features, so expect bugs. If you find any, open an issue on GitHub and I'll do my best to fix them.</li>
         </ul>
 
         <h2>My aim</h2>
