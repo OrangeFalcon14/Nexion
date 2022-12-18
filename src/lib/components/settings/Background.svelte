@@ -1,7 +1,8 @@
 <script>
+import AddBackgroundModal from "./AddBackgroundModal.svelte";
 import BackgroundThumbnail from "./BackgroundThumbnail.svelte";
 
-let wallpaperPaths = [
+let wallpaperPaths = JSON.parse(localStorage.getItem("wallpaperPaths")) || [
     "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg",
     "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/hao-wang-pVq6YhmDPtk-unsplash.jpg",
     "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg",
@@ -16,14 +17,48 @@ let currentWallpaper = localStorage.getItem("currentWallpaper") || wallpaperPath
 $: changeBackground({detail: currentWallpaper});
 
 function changeBackground(event) {
+    if(event.detail.from === "modal"){
+        if(event.detail.type === "url"){
+            wallpaperPaths.push(event.detail.url);
+            wallpaperPaths = wallpaperPaths;
+            
+            currentWallpaper = wallpaperPaths.at(-1);
+            // @ts-ignore
+            document.querySelector("#container").style.backgroundImage = `url(${currentWallpaper})`;
+            
+            localStorage.setItem("currentWallpaper", currentWallpaper);
+            localStorage.setItem("wallpaperPaths", JSON.stringify(wallpaperPaths));
+            console.log(localStorage.getItem("currentWallpaper"), localStorage.getItem("wallpaperPaths"));
+            showModal = false;
+        }else if(event.detail.type === "image"){
+            const reader = new FileReader();
+            if(typeof event.detail.images[0] === undefined) return;
+            reader.readAsDataURL(event.detail.images[0])
+            reader.onload = () => {
+                wallpaperPaths.push(reader.result);
+                wallpaperPaths = wallpaperPaths;
+                
+                currentWallpaper = wallpaperPaths.at(-1);
+                // @ts-ignore
+                document.querySelector("#container").style.backgroundImage = `url(${currentWallpaper})`;
+                
+                localStorage.setItem("currentWallpaper", currentWallpaper);
+                localStorage.setItem("wallpaperPaths", JSON.stringify(wallpaperPaths));
+                console.log(localStorage.getItem("currentWallpaper"), localStorage.getItem("wallpaperPaths"));
+                showModal = false;
+            }
+        }
+        return;
+    }
     let wallpaper = wallpaperPaths.at(wallpaperPaths.indexOf(event.detail));
-
+    
     // @ts-ignore
     document.querySelector("#container").style.backgroundImage = `url(${wallpaper})`;
     currentWallpaper = wallpaper;
-
+    
     localStorage.setItem("currentWallpaper", currentWallpaper)
 }
+let showModal = false;
 </script>
 
 <div class="current-wallpaper">
@@ -33,8 +68,9 @@ function changeBackground(event) {
     {#each wallpaperPaths as wallpaper}
         <BackgroundThumbnail path={wallpaper} on:changeBackground={changeBackground} />
     {/each}
-    <button>+</button>
+    <button on:click={() => showModal = true}>+</button>
 </div>
+<AddBackgroundModal bind:showModal on:changeBackground={changeBackground}></AddBackgroundModal>
 
 <style>
 .current-wallpaper{
