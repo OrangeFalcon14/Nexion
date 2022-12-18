@@ -1,17 +1,25 @@
 <script>
 import Customize from "./settings/Customize.svelte";
+import Background from "./settings/Background.svelte";
 
 let content = "Customize";
 </script>
 <div class="window-container">
     <div class="sidebar">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div class="sidebar-link" on:click={() => content = "Customize"} class:active={content === "Customize"}>
              Customize
+        </div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="sidebar-link" on:click={() => content = "Background"} class:active={content === "Background"}>
+             Background
         </div>
     </div>
     <div class="main-content">
         {#if content === "Customize"}
             <Customize />
+        {:else if content === "Background"}
+            <Background />
         {/if}
     </div>
 </div>
@@ -25,7 +33,7 @@ let content = "Customize";
     font-size: 20px;
     padding: 0px;
     display: grid;
-    grid-template-columns: 25% 1fr;
+    grid-template-columns: 25vh 1fr;
 }
 
 .sidebar{

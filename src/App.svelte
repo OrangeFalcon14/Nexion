@@ -150,6 +150,7 @@ function windowMoved(event){
 const root = document.querySelector(":root");
 
 function setCSSVar(variable, val) {
+    // @ts-ignore
     root.style.setProperty(variable, val);
 }
 
@@ -184,6 +185,10 @@ setContext("defaultCSSVars", defaultCSSVars);
 
 onMount(() => {
     new_window({detail: {app: "Welcome", focused: true}})
+    
+    let currentWallpaper = localStorage.getItem("currentWallpaper") || undefined;
+    // @ts-ignore
+    if(currentWallpaper) document.querySelector("#container").style.backgroundImage = `url(${currentWallpaper})`;
 })
 </script>
 
