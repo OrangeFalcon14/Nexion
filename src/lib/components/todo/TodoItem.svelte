@@ -111,6 +111,7 @@ const taskDelete = () => {
     font-size: 18px;
     transition: 0.2s all ease-in;    
     display: inline;
+    font-family: inherit;
 }
 .done-btn:hover, .delete-btn:hover{
     opacity: 0.8;

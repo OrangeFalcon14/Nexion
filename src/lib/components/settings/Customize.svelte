@@ -161,6 +161,7 @@ button, label[for="config_import"]{
     font-size: 15px;
     transition: 0.2s all ease-in;    
     display: inline;
+    font-family: inherit;
 }
 button:hover{
     opacity: 0.8;

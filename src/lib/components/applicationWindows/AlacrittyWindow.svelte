@@ -73,14 +73,14 @@ function handleKeyUp(event, id) {
     background-color: transparent;
     color: white;
     width: 99.5%;
-    font-family: "Ubuntu Mono";
+    font-family: "Ubuntu Mono", monospace;
 }
 
 .shell-output{
     width: 100%;
     max-height: min-content;
     background-color: transparent;
-    font-family: "Ubuntu Mono";
+    font-family: "Ubuntu Mono", monospace;
     font-size: 18px;
 }
 </style>
