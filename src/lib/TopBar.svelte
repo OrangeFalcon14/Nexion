@@ -1,6 +1,7 @@
 <script>
 import { createEventDispatcher } from "svelte";
 import ApplicationsMenu from "./ApplicationsMenu.svelte";
+import SystemMenu from "./SystemMenu.svelte";
 
 let dispatch = createEventDispatcher()
 
@@ -48,19 +49,21 @@ setInterval(update_time, 1000);
 
 export let applications_menu_show = false;
 
-console.log(applications_menu_show);
-
+let system_menu_show = false;
 </script>
 
 <div id="topbar">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <span id="applications-menu-launcher" on:click={() => {applications_menu_show = !applications_menu_show}}>Applications</span>
     <span id="date-time">{date_time}</span>
-    <span id="sys-tray">  </span>
+    <span id="sys-tray" on:click={() => {system_menu_show = !system_menu_show}}>    </span>
     
 </div>
 {#if applications_menu_show}
     <ApplicationsMenu on:closeApplicationMenu={() => {applications_menu_show = false}} on:newWindow={(event) => {applications_menu_show = false; dispatch("newWindow", event.detail)}} />
+{/if}
+{#if system_menu_show}
+    <SystemMenu on:lockScreen />
 {/if}
 
 <style>
@@ -92,6 +95,16 @@ console.log(applications_menu_show);
     padding-right: 0.5%;
 }
 #applications-menu-launcher{
-    margin-left: 0.5%;
+    /* margin-left: 0.5%; */
+}
+
+#topbar span{
+    padding-inline: 1rem;
+    border-radius: 1rem;
+    height: 100%;
+}
+
+#topbar span:hover{
+    background: #404040;
 }
 </style>

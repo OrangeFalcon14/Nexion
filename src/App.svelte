@@ -196,12 +196,10 @@ let locked = false;
 </script>
 
 <div id="container">
-    <TopBar on:newWindow={new_window} applications_menu_show={applications_menu_show} />
+    <TopBar on:newWindow={new_window} on:lockScreen={() => {locked = true; console.log(locked)}} applications_menu_show={applications_menu_show} />
     <Dock apps_list={dock_apps} on:newWindow={new_window}/>
     {#each windows as window}
         <Window app={window.app} number={window.number} focused={window.focused} initalTop={window.top} initalLeft={window.left} on:focusWindow={focus_window} on:closeWindow={close_window} on:windowMoved={windowMoved}/> 
     {/each}
-    {#if locked}
-        <LockScreen />
-    {/if}
+    <LockScreen bind:locked={locked}/>
 </div>

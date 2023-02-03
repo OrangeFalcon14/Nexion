@@ -22,6 +22,8 @@ body {
     --menu-width: 300px;
     --app-menu-height: 500px;
     --app-menu-width: 500px;
+    --system-menu-height: auto;
+    --system-menu-width: 300px;
     --notifications-calendar-dropdown-height: 300px;
     --notifications-calendar-dropdown-width: 600px;
 }

@@ -1,5 +1,7 @@
 <script>
-let unlocked = false;
+import { onMount } from "svelte";
+
+export let locked = false;
 
 let time = "5:00:36";
 let date = "Sun Apr 1";
@@ -45,14 +47,18 @@ function update_time() {
 update_time();
 setInterval(update_time, 1000);
 
-$:{
-    // @ts-ignore
-    if(unlocked)document.querySelector("#lockscreen").style.top = "-100%";
-}
+// onMount(() => {
+//     $:{
+//         // @ts-ignore
+//         if(locked)document.querySelector("#lockscreen").style.top = "0%";
+//         // @ts-ignore
+//         else document.querySelector("#lockscreen").style.top = "-100%";
+//     }
+// });
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div id="lockscreen" class:animate-up={unlocked} on:click={() => unlocked = true}>
+<div id="lockscreen" class:show-lockscreen={locked} on:click={() => locked = false}>
     <div class="date-time-container">
         <h1>{time}</h1>
         <h5>{date}</h5>
@@ -62,7 +68,7 @@ $:{
 <style>
 #lockscreen{
     position: absolute;
-    top: 0;
+    top: -100%;
     left: 0;
     height: 100%;
     width: 100%;
@@ -73,7 +79,7 @@ $:{
     align-items: center;
     text-align: center;
     user-select: none;
-    transition: 0.2s;
+    transition: 0.2s ease-out;
 }
 
 h1{
@@ -85,5 +91,9 @@ h1{
 h5{
     font-family: Ubuntu Light;
     font-size: 1rem;
+}
+
+#lockscreen.show-lockscreen{
+    top: 0%;
 }
 </style>
