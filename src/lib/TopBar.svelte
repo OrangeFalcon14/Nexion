@@ -63,7 +63,7 @@ let system_menu_show = false;
     <ApplicationsMenu on:closeApplicationMenu={() => {applications_menu_show = false}} on:newWindow={(event) => {applications_menu_show = false; dispatch("newWindow", event.detail)}} />
 {/if}
 {#if system_menu_show}
-    <SystemMenu on:lockScreen />
+    <SystemMenu on:lockScreen on:newWindow={(event) => {system_menu_show = false; dispatch("newWindow", event.detail)}} />
 {/if}
 
 <style>

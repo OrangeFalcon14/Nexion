@@ -32,7 +32,8 @@ button{
     margin: auto 2px;
     top: 50%;
     transform: translate(0, -50%);
-    transition: all 0.2s
+    transition: all 0.2s;
+    font-family: inherit;
 }
 
 button:first-of-type{

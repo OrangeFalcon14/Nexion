@@ -110,6 +110,7 @@ const take_photo = () => {
     font-size: 40px;
     border-radius: 50%;
     transition: opacity 0.2s;
+    font-family: inherit;
 }
 .controls .photo-btn:hover{
     opacity: 0.75;

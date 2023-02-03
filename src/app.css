@@ -26,6 +26,7 @@ body {
     --system-menu-width: 300px;
     --notifications-calendar-dropdown-height: 300px;
     --notifications-calendar-dropdown-width: 600px;
+    accent-color: var(--accent-color);
 }
 .light {
     --color1: #fff;

@@ -2,10 +2,30 @@
 import { createEventDispatcher } from "svelte";
 
 const dispatch = createEventDispatcher();
+
+let batteryPercentage = "100%";
+
+navigator.getBattery?.().then((battery) => {
+    batteryPercentage = battery * 100 + "%";
+})
+
+let brightness = 100;
+
+$:{
+    document.body.style.filter = `brightness(${brightness}%)`;
+}
 </script>
 
 <div id="system-menu">
-    <div class="menu-item" on:click={() => dispatch("lockScreen")}> Lock</div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="menu-item menu-button" on:click={() => dispatch("lockScreen")}></div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="menu-item menu-button" on:click={() => dispatch("newWindow", {app: "Camera", focused: true})}></div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="menu-item menu-button" on:click={() => dispatch("newWindow", {app: "Settings", focused:true})}></div>
+    <div class="menu-item menu-button battery-percentage">  {batteryPercentage}</div>
+    <br><br>
+    <div class="menu-item brightness-control">󰃟 <input type="range" name="brightness-input" id="brightness-input" min="20" max="100" bind:value={brightness}></div>
 </div>
 
 <style>
@@ -37,5 +57,26 @@ const dispatch = createEventDispatcher();
 #system-menu .menu-item:active,
 #system-menu .menu-item:focus{
     filter:brightness(150%) saturate(70%);
+}
+
+#system-menu .brightness-control{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+#system-menu .brightness-control input[type="range"]{
+    width: 100%;
+}
+
+#system-menu .menu-item.menu-button{
+    display: inline-block;
+    width: fit-content;
+    background: var(--color3);
+    backdrop-filter: brightness(400%);
+    border-radius: 10px;
+    padding: 0.75rem;
+}
+#system-menu .menu-item.menu-button.battery-percentage{
+    float: right;
 }
 </style>
