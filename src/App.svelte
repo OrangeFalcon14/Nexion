@@ -2,6 +2,7 @@
 import Dock from './lib/Dock.svelte';
 import Window from './lib/Window.svelte';
 import TopBar from './lib/TopBar.svelte';
+import LockScreen from './lib/LockScreen.svelte';
 import { onMount, setContext } from 'svelte';
 
 let apps_list = ["Files", "Firefox", "Asteroids", "Alacritty", "Camera", "Pycharm Community Edition", "Settings", "Text Editor", "Todo", "Visual Studio Code"];
@@ -190,6 +191,8 @@ onMount(() => {
     // @ts-ignore
     if(currentWallpaper) document.querySelector("#container").style.backgroundImage = `url(${currentWallpaper})`;
 })
+
+let locked = false;
 </script>
 
 <div id="container">
@@ -198,4 +201,7 @@ onMount(() => {
     {#each windows as window}
         <Window app={window.app} number={window.number} focused={window.focused} initalTop={window.top} initalLeft={window.left} on:focusWindow={focus_window} on:closeWindow={close_window} on:windowMoved={windowMoved}/> 
     {/each}
+    {#if locked}
+        <LockScreen />
+    {/if}
 </div>
