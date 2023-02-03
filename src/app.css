@@ -61,7 +61,7 @@ body {
 
 @font-face {
     font-family: 'Ubuntu Light';
-    src: url("/src/assets/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Light\ Nerd\ Font\ Complete.ttf")
+    src: url("/Nexion/src/assets/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Light\ Nerd\ Font\ Complete.ttf");
 }
 
 #app{
