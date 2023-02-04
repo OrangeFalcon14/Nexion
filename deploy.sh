@@ -1,10 +1,12 @@
 npm run build
 
-cp -R src/assets/fonts dist/src/assets/fonts
-cp -R src/assets/icons dist/src/assets/icons
-cp -R src/assets/wallpapers dist/src/assets/wallpapers
-cp -R src/assets/sounds dist/src/assets/sounds
-cp -R src/assets/Asteroids.html dist/src/assets/Asteroids.html
+# mkdir -p dist/Nexion/
+
+# mv dist/fonts dist/Nexion/fonts
+# mv dist/icons dist/Nexion/icons
+# mv dist/wallpapers dist/Nexion/wallpapers
+# mv dist/sounds dist/Nexion/sounds
+# mv dist/Asteroids.html dist/Nexion/
 
 cd dist
 git init

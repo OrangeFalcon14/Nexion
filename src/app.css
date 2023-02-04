@@ -44,22 +44,22 @@ body {
     color: black;
 }
 .light #container{
-    background-image: url("/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg");
+    background-image: url("/Nexion/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg");
 }
 
 @font-face {
     font-family: NerdFontSymbols;
-    src: url("/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf");
+    src: url("/Nexion/fonts/Nerd_Fonts/Symbols-2048-em\ Nerd\ Font\ Complete.ttf");
 }
 
 @font-face {
     font-family: Ubuntu;
-    src: url("/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Nerd\ Font\ Complete.ttf");
+    src: url("/Nexion/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Nerd\ Font\ Complete.ttf");
 }
 
 @font-face {
     font-family: 'Ubuntu Light';
-    src: url("/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Light\ Nerd\ Font\ Complete.ttf");
+    src: url("/Nexion/fonts/Nerd_Fonts/Ubuntu/Ubuntu\ Light\ Nerd\ Font\ Complete.ttf");
 }
 
 #app{
@@ -70,7 +70,7 @@ body {
 #container {
     height: 100%;
     width: 100%;
-    background-image: url("/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg");
+    background-image: url("/Nexion/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg");
     background-size: cover;
 }
 
