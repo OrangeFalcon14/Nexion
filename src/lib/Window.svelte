@@ -66,7 +66,9 @@ function closeDragElement() {
         <button class="titlebar-btn maximize-btn" on:click={() => {minimized = false; maximized = true;}}></button>
         <button class="titlebar-btn minimize-btn" on:click={() => {maximized = false; minimized = true;}}></button>
 
-        <div class="window-title">{app}</div>
+        <div class="window-title">
+            <div>{app}</div>
+        </div>
     </div>
     {#if app === "Files"}
         <FilesWindow />
@@ -96,20 +98,18 @@ function closeDragElement() {
 <style>
 .window {
     position: absolute;
-    /* transition: width 0.25s, height 0.25s, left 0.25s, top 0.25s; */
-    z-index: 9;
     background-color: var(--color2);
     border-radius: 10px;
-    opacity: 0.7;
     z-index: 5;
     backdrop-filter: blur(var(--blur));
+    box-shadow: none;
 }
 
 .window .window-titlebar {
     /* #titlebar{ */
     height: 50px;
     width: 100%;
-    background-color: var(--color1);
+    background-color: var(--color2);
     border-radius: 10px;
 }
 
@@ -140,8 +140,8 @@ function closeDragElement() {
 }
 
 .window .window-titlebar .window-title {
-    /* position: relative;
-    top: 0; */
+    position: relative;
+    bottom: 20px;
     margin-top: 0px;
     width: 100%;
     height: 100%;
@@ -149,8 +149,14 @@ function closeDragElement() {
     user-select: none;
     font-weight: 600;
 }
+.window .window-titlebar .window-title > *{
+    padding-top: 15px;
+}
 .focused{
-    opacity: 1;
+    box-shadow: 0 0.5rem 1rem 1px #000000a1;
     z-index: 6;
+}
+.focused .window-titlebar{
+    background-color: var(--color1);
 }
 </style>
