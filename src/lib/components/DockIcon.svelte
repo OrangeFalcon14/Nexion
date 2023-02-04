@@ -10,11 +10,11 @@ export let focused;
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <span class="dock-item" on:click={() => {dispatch("newWindow", {app, focused:true})}} class:focused={focused}>
-    <!-- <img src={`/Nexion/src/assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon"> -->
+    <!-- <img src={`/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon"> -->
     {#if app != "Asteroids"}
-    <img src={`/Nexion/src/assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon">
+    <img src={`/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon">
     {:else}
-    <img src={`/Nexion/src/assets/icons/apps/asteroids.png`} alt={app} class="dock-item-icon">
+    <img src={`/icons/apps/asteroids.png`} alt={app} class="dock-item-icon">
     {/if}
     <!-- <img src={`../../assets/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon"> -->
     <span class="running-indicator" class:hide={!running}></span>

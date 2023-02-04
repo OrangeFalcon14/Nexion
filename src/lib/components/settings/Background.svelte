@@ -3,13 +3,13 @@ import AddBackgroundModal from "./AddBackgroundModal.svelte";
 import BackgroundThumbnail from "./BackgroundThumbnail.svelte";
 
 let wallpaperPaths = JSON.parse(localStorage.getItem("wallpaperPaths")) || [
-    "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg",
-    "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/hao-wang-pVq6YhmDPtk-unsplash.jpg",
-    "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg",
-    "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/pawel-czerwinski-tMbQpdguDVQ-unsplash.jpg",
-    "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/richard-horvath-_nWaeTF6qo0-unsplash.jpg",
-    "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg",
-    "https://orangefalcon14.github.io/Nexion/src/assets/wallpapers/wladislaw-sokolowskij-0vw4InAC-yM-unsplash.jpg",
+    "/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg",
+    "/wallpapers/hao-wang-pVq6YhmDPtk-unsplash.jpg",
+    "/wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg",
+    "/wallpapers/pawel-czerwinski-tMbQpdguDVQ-unsplash.jpg",
+    "/wallpapers/richard-horvath-_nWaeTF6qo0-unsplash.jpg",
+    "/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg",
+    "/wallpapers/wladislaw-sokolowskij-0vw4InAC-yM-unsplash.jpg",
 ]
 
 let currentWallpaper = localStorage.getItem("currentWallpaper") || wallpaperPaths.at(0);

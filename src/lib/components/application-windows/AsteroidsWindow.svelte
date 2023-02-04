@@ -1,6 +1,6 @@
 <div class="window-container">
     <!-- <iframe src="../../assets/Asteroids.html" title="Asteroids" frameborder="0"></iframe> -->
-    <iframe src="/Nexion/src/assets/Asteroids.html" title="Asteroids" frameborder="0"></iframe>
+    <iframe src="/Nexion/Asteroids.html" title="Asteroids" frameborder="0"></iframe>
 </div>
 
 <style>

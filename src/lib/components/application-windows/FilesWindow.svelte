@@ -83,7 +83,7 @@ let folder_icons_array = Array(20).fill(0);
     display: inline-block;
     width: 100px;
     height: 100px;
-    background-image: url("/Nexion/src/assets/icons/system/folder.svg");
+    background-image: url("/icons/system/folder.svg");
     /* background-image: url("../../assets/icons/system/folder.svg"); */
     background-size: cover;
     transition: opacity 0.25s;
