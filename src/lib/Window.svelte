@@ -111,6 +111,7 @@ function closeDragElement() {
     width: 100%;
     background-color: var(--color2);
     border-radius: 10px;
+    isolation: isolate;
 }
 
 .window .window-titlebar .titlebar-btn {
@@ -124,6 +125,7 @@ function closeDragElement() {
     outline: none;
     border-radius: 50%;
     margin-left: 1%;
+    z-index: 2;
 }
 
 .window .window-titlebar .close-btn {
@@ -148,6 +150,7 @@ function closeDragElement() {
     text-align: center;
     user-select: none;
     font-weight: 600;
+    z-index: 1;
 }
 .window .window-titlebar .window-title > *{
     padding-top: 15px;
