@@ -1,7 +1,7 @@
 <script>
 import { getContext, onMount } from "svelte";
-import AppIcon from "./components/applicationsMenu/AppIcon.svelte";
-import SearchField from "./components/applicationsMenu/SearchField.svelte";
+import AppIcon from "./components/applications-menu/AppIcon.svelte";
+import SearchField from "./components/applications-menu/SearchField.svelte";
 
 let apps_list = getContext("apps_list");
 
