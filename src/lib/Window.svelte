@@ -1,6 +1,10 @@
 <script>
 import { createEventDispatcher, setContext } from "svelte";
 
+import { focusWindow } from "./utils/focusWindow";
+import { windowMoved } from "./utils/misc";
+import { closeWindow } from "./utils/closeWindow";
+
 let dispatch = createEventDispatcher();
 
 import AlacrittyWindow from "./components/application-windows/AlacrittyWindow.svelte";
@@ -54,15 +58,25 @@ function elementDrag(e) {
 function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
-    dispatch("windowMoved", {number, top: dragElement.style.top, left: dragElement.style.left,});
+    windowMoved({
+        detail: {
+            number, 
+            top: dragElement.style.top, 
+            left: dragElement.style.left,
+        }
+    });
 }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div id={number} class="window" class:focused={focused} style="top: {top}; left: {left}; height: {height}; width: {width};" on:mousedown={() => dispatch("focusWindow", {number, app})}>
+<div id={number} class="window" class:focused={focused} style="top: {top}; left: {left}; height: {height}; width: {width};" on:mousedown={() => focusWindow({detail:{ number, app }})}>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="window-titlebar" id={`${number}titlebar`} on:mousedown={(event) => dragMouseDown(event)}>
-        <button class="titlebar-btn close-btn" on:click={() => dispatch("closeWindow", {app,  number})}></button>
+        <button class="titlebar-btn close-btn" on:click={() => closeWindow({
+            detail: {
+                app,
+                number
+            }})}></button>
         <button class="titlebar-btn maximize-btn" on:click={() => {minimized = false; maximized = true;}}></button>
         <button class="titlebar-btn minimize-btn" on:click={() => {maximized = false; minimized = true;}}></button>
 

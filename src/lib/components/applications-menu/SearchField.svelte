@@ -1,7 +1,6 @@
 <script>
 import { createEventDispatcher } from "svelte";
-
-export let apps_list;
+import { appsList } from "../../store/core";
 
 const dispatch = createEventDispatcher()
 
@@ -19,10 +18,10 @@ function handleKeyPress(event){
         return;
     }
     if (search_string == ""){
-        dispatch("showApps", apps_list);
+        dispatch("showApps", $appsList);
     }
     let shownApps = [];
-    for(let app of apps_list){
+    for(let app of $appsList){
         if(is_substring(app.toLowerCase(), search_string)){
             shownApps.push(app);
         }

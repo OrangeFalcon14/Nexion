@@ -1,7 +1,10 @@
 <script>
 import { onMount } from "svelte";
+import { locked_store } from "./store/settings";
 
-export let locked = false;
+let locked = false;
+locked_store.subscribe(value => locked = value)
+// export let locked = false;
 
 let time = "5:00:36";
 let date = "Sun Apr 1";
@@ -58,7 +61,7 @@ setInterval(update_time, 1000);
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div id="lockscreen" class:show-lockscreen={locked} on:click={() => locked = false}>
+<div id="lockscreen" class:show-lockscreen={locked} on:click={() => {locked = false; locked_store.set(false)}}>
     <div class="date-time-container">
         <h1>{time}</h1>
         <h5>{date}</h5>

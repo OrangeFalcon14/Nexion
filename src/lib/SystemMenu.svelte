@@ -1,5 +1,7 @@
 <script>
 import { createEventDispatcher } from "svelte";
+import { locked_store } from "./store/settings";
+import { newWindow } from "./utils/newWindow";
 
 const dispatch = createEventDispatcher();
 
@@ -18,11 +20,19 @@ $:{
 
 <div id="system-menu">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="menu-item menu-button" on:click={() => dispatch("lockScreen")}></div>
+    <div class="menu-item menu-button" on:click={() => {locked_store.set(true); dispatch("closeSystemMenu")}}></div>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="menu-item menu-button" on:click={() => dispatch("newWindow", {app: "Camera", focused: true})}></div>
+    <div class="menu-item menu-button" on:click={() => {newWindow({
+        detail:{
+            app: "Camera",
+            focused:true}
+        }); dispatch("closeSystemMenu")}}></div>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="menu-item menu-button" on:click={() => dispatch("newWindow", {app: "Settings", focused:true})}></div>
+    <div class="menu-item menu-button" on:click={() => {newWindow({
+        detail:{
+            app: "Settings",
+            focused:true}
+        }); dispatch("closeSystemMenu")}}></div>
     <div class="menu-item menu-button battery-percentage">  {batteryPercentage}</div>
     <br><br>
     <div class="menu-item brightness-control">󰃟 <input type="range" name="brightness-input" id="brightness-input" min="20" max="100" bind:value={brightness}></div>

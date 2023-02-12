@@ -2,10 +2,9 @@
 import { getContext, onMount } from "svelte";
 import AppIcon from "./components/applications-menu/AppIcon.svelte";
 import SearchField from "./components/applications-menu/SearchField.svelte";
+import { appsList } from "./store/core";
 
-let apps_list = getContext("apps_list");
-
-let shownApps = JSON.parse(JSON.stringify(apps_list));
+let shownApps =  JSON.parse(JSON.stringify($appsList));
 
 function showApps(event){
     shownApps = event.detail;
@@ -18,11 +17,11 @@ onMount(() => {
 </script>
 
 <div id="applications-menu">
-    <SearchField {apps_list} on:closeApplicationMenu on:showApps={showApps} />
+    <SearchField on:closeApplicationMenu on:showApps={showApps} />
     <br><br>
     <div id="apps-container">
         {#each shownApps as app}
-            <AppIcon {app} on:newWindow />
+            <AppIcon {app} on:closeApplicationsMenu />
         {/each}
     </div>
 </div>

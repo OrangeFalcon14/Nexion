@@ -1,14 +1,15 @@
 <script>
 import DockIcon from './components/DockIcon.svelte';
-
+import { dock_apps_store } from './store/core';
 let dockStyle = localStorage.getItem("dockStyle") || "panel-dock";
-
-export let apps_list;
+    
+let apps_list;
+dock_apps_store.subscribe(value => apps_list = value)
 </script>
 
 <div id="dock" class={dockStyle}>
     {#each apps_list as app}
-        <DockIcon app={app.name} running={app.running} focused={app.focused} on:newWindow/>
+        <DockIcon app={app.name} running={app.running} focused={app.focused}/>
     {/each}
 </div>
 

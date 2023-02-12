@@ -1,9 +1,6 @@
 <script>
-import { createEventDispatcher } from "svelte";
 import ApplicationsMenu from "./ApplicationsMenu.svelte";
 import SystemMenu from "./SystemMenu.svelte";
-
-let dispatch = createEventDispatcher()
 
 let date_time;
 
@@ -56,14 +53,15 @@ let system_menu_show = false;
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <span id="applications-menu-launcher" on:click={() => {applications_menu_show = !applications_menu_show}}>Applications</span>
     <span id="date-time">{date_time}</span>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <span id="sys-tray" on:click={() => {system_menu_show = !system_menu_show}}>    </span>
     
 </div>
 {#if applications_menu_show}
-    <ApplicationsMenu on:closeApplicationMenu={() => {applications_menu_show = false}} on:newWindow={(event) => {applications_menu_show = false; dispatch("newWindow", event.detail)}} />
+    <ApplicationsMenu on:closeApplicationsMenu={() => {applications_menu_show = false}} />
 {/if}
 {#if system_menu_show}
-    <SystemMenu on:lockScreen on:newWindow={(event) => {system_menu_show = false; dispatch("newWindow", event.detail)}} />
+    <SystemMenu on:closeSystemMenu={() => system_menu_show = false} />
 {/if}
 
 <style>
@@ -93,9 +91,6 @@ let system_menu_show = false;
     position: inherit;
     right: 0;
     padding-right: 0.5%;
-}
-#applications-menu-launcher{
-    /* margin-left: 0.5%; */
 }
 
 #topbar span{

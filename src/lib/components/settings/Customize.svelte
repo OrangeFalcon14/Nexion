@@ -1,5 +1,6 @@
 <script>
 import { getContext } from "svelte";
+import { getCSSVar, setCSSVar } from "../../utils/misc"
 
 let dockStyle = localStorage.getItem("dockStyle") || "panel-dock";
 
@@ -18,9 +19,6 @@ let color2 = colorConfig["--color2"] || "#161620cf";
 let color3 = colorConfig["--color3"] || "#111118cf";
 let accentColor = colorConfig["--accent-color"] || "#736099";
 let blur = colorConfig["--blur"] || 20;
-
-const setCSSVar = getContext("setCSSVar");
-const getCSSVar = getContext("getCSSVar");
 
 $: {
     setCSSVar("--color1", color1);

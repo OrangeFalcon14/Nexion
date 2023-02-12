@@ -1,7 +1,6 @@
 <script>
 import { createEventDispatcher } from "svelte";
-
-let dispatch = createEventDispatcher();
+import { newWindow } from "../utils/newWindow";
 
 export let running;
 export let app;
@@ -9,7 +8,11 @@ export let focused;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<span class="dock-item" on:click={() => {dispatch("newWindow", {app, focused:true})}} class:focused={focused}>
+<span class="dock-item" on:click={() => newWindow({
+    detail:{
+        app, 
+        focused:true
+    }})} class:focused={focused}>
     <!-- <img src={`/Nexion/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon"> -->
     {#if app != "Asteroids"}
     <img src={`/Nexion/icons/apps/${app.toLowerCase()}.svg`} alt={app} class="dock-item-icon">

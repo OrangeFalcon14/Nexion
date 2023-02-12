@@ -1,12 +1,18 @@
 <script>
 import { createEventDispatcher } from "svelte";
+import { newWindow } from "../../utils/newWindow";
+
 
 const dispatch = createEventDispatcher()
 export let app;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="applications-menu-app" title={app} on:click={() => {dispatch("newWindow", {app, focused:true})}}>
+<div class="applications-menu-app" title={app} on:click={() => {newWindow({
+    detail: {
+        app,
+        focused:true
+    }}); dispatch("closeApplicationsMenu")}}>
     {#if app != "Asteroids"}
         <img src="/Nexion/icons/apps/{app.toLowerCase()}.svg" alt={app} style="height: 64px" />
     {:else}
