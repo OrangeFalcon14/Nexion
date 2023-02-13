@@ -1,16 +1,9 @@
 <script>
+import { wallpaper_paths_store } from "../../store/settings";
 import AddBackgroundModal from "./AddBackgroundModal.svelte";
 import BackgroundThumbnail from "./BackgroundThumbnail.svelte";
 
-let wallpaperPaths = JSON.parse(localStorage.getItem("wallpaperPaths")) || [
-    "/Nexion/wallpapers/ash-edmonds-0aWZdK8nK2I-unsplash.jpg",
-    "/Nexion/wallpapers/hao-wang-pVq6YhmDPtk-unsplash.jpg",
-    "/Nexion/wallpapers/jr-korpa-9XngoIpxcEo-unsplash.jpg",
-    "/Nexion/wallpapers/pawel-czerwinski-tMbQpdguDVQ-unsplash.jpg",
-    "/Nexion/wallpapers/richard-horvath-_nWaeTF6qo0-unsplash.jpg",
-    "/Nexion/wallpapers/shapelined-_JBKdviweXI-unsplash.jpg",
-    "/Nexion/wallpapers/wladislaw-sokolowskij-0vw4InAC-yM-unsplash.jpg",
-]
+let wallpaperPaths = JSON.parse(localStorage.getItem("wallpaperPaths")) || $wallpaper_paths_store;
 
 let currentWallpaper = localStorage.getItem("currentWallpaper") || wallpaperPaths.at(0);
 

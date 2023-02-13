@@ -1,6 +1,7 @@
 <script>
 import Customize from "../settings/Customize.svelte";
 import Background from "../settings/Background.svelte";
+import Users from "../settings/Users.svelte";
 
 let content = "Customize";
 </script>
@@ -14,12 +15,18 @@ let content = "Customize";
         <div class="sidebar-link" on:click={() => content = "Background"} class:active={content === "Background"}>
              Background
         </div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="sidebar-link" on:click={() => content = "Users"} class:active={content === "Users"}>
+             Users
+        </div>
     </div>
     <div class="main-content">
         {#if content === "Customize"}
             <Customize />
         {:else if content === "Background"}
             <Background />
+        {:else if content === "Users"}
+            <Users />
         {/if}
     </div>
 </div>
