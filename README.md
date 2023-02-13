@@ -16,3 +16,7 @@ It can be viewed [here](https://orangefalcon14.github.io/Nexion/).
 #### Icons
 - Nerd Fonts
 - Papirus Icons
+#### Usernames
+- [unique-names-generator](https://www.npmjs.com/package/unique-names-generator)
+#### Avatars
+- [DiceBear](https://www.npmjs.com/package/dicebear)
