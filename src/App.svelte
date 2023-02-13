@@ -6,28 +6,15 @@ import LockScreen from './lib/LockScreen.svelte';
 import { onMount, setContext } from 'svelte';
 
 import { newWindow } from './lib/utils/newWindow';
-import { closeWindow } from './lib/utils/closeWindow';
-import { focusWindow } from './lib/utils/focusWindow';
-import { windowMoved, setCSSVar, getCSSVar } from './lib/utils/misc';
+import { setCSSVar} from './lib/utils/misc';
 
-import { windows_store, window_ids_store, dock_apps_store} from "./lib/store/core";
-import { locked_store, applications_menu_show_store } from "./lib/store/settings";
+import { windows_store} from "./lib/store/core";
 
-let windows, window_ids, dock_apps;
+let windows;
 
 windows_store.subscribe(value => windows = value)
-window_ids_store.subscribe(value => window_ids = value)
-dock_apps_store.subscribe(value => dock_apps = value)
 
-$:{
-    windows_store.set(windows);
-    window_ids_store.set(window_ids);
-    dock_apps_store.set(dock_apps);
-}
-
-let applications_menu_show;
-
-applications_menu_show_store.subscribe(value => applications_menu_show = value);
+$:{ windows_store.set(windows) }
 
 let colorConfig = JSON.parse(localStorage.getItem("colorConfig")) || undefined;
 if(colorConfig){

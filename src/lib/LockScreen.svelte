@@ -1,10 +1,8 @@
 <script>
-import { onMount } from "svelte";
 import { locked_store } from "./store/settings";
 
 let locked = false;
 locked_store.subscribe(value => locked = value)
-// export let locked = false;
 
 let time = "5:00:36";
 let date = "Sun Apr 1";
@@ -50,14 +48,6 @@ function update_time() {
 update_time();
 setInterval(update_time, 1000);
 
-// onMount(() => {
-//     $:{
-//         // @ts-ignore
-//         if(locked)document.querySelector("#lockscreen").style.top = "0%";
-//         // @ts-ignore
-//         else document.querySelector("#lockscreen").style.top = "-100%";
-//     }
-// });
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->

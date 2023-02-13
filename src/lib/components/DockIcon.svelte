@@ -1,5 +1,4 @@
 <script>
-import { createEventDispatcher } from "svelte";
 import { newWindow } from "../utils/newWindow";
 
 export let running;

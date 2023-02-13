@@ -1,5 +1,5 @@
 <script>
-import { getContext, onMount } from "svelte";
+import { onMount } from "svelte";
 import AppIcon from "./components/applications-menu/AppIcon.svelte";
 import SearchField from "./components/applications-menu/SearchField.svelte";
 import { appsList } from "./store/core";

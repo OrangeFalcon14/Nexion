@@ -1,6 +1,6 @@
 <script>
 import { getContext } from "svelte";
-import { getCSSVar, setCSSVar } from "../../utils/misc"
+import { setCSSVar } from "../../utils/misc"
 
 let dockStyle = localStorage.getItem("dockStyle") || "panel-dock";
 
