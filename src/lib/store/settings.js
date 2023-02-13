@@ -34,7 +34,7 @@ const avatar = createAvatar(pixelArt, {
     seed: username
 })
 
-let jpeg = await avatar.jpeg().toDataUri();
+let jpeg = avatar.toDataUriSync();
 
 export const user_avatar = readable(jpeg);
 
